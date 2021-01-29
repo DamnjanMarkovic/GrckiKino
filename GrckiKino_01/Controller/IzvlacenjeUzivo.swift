@@ -15,6 +15,8 @@ class IzvlacenjeUzivo: UIViewController, WKNavigationDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Uzivo"
+        navigationController?.navigationBar.isHidden = false
         view.backgroundColor = .blue
         
 

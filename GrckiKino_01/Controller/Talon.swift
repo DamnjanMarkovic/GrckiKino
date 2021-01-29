@@ -118,13 +118,27 @@ class Talon: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Izaberi i posalji brojeve!"
         view.backgroundColor = .darkGray
-        navigationController?.navigationBar.isHidden = true
+        navigationController?.navigationBar.isHidden = false
         koloKliknuto = DatabaseManager.shared.koloKliknuto
         postaviUI()
         postaviInformacije()
 
+        navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .close, target: self, action: #selector(vratiSe))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "text.justify")!.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(posaljiIzabraneBrojeve))
     }
+    
+    @objc func vratiSe() {
+
+        self.dismiss(animated: true)
+    }
+
+    @objc func posaljiIzabraneBrojeve() {
+
+
+    }
+    
     
     func postaviUI() {
         postaviBrojeve()
@@ -161,9 +175,9 @@ class Talon: UIViewController {
     func postaviInformacije() {
         
 
-        podaciOIzabranomKolu.text = "Vreme izvlacenja: \(TimeFunctions.vratiVremeUMinutima(timeAsTimestamp: koloKliknuto.drawTime)) | Kolo: \(koloKliknuto.drawId)"
-        
-        ukupnoIzabranoBrojevaLabela.text = "Ukupno izabrano: \(ukupnoIzabranoBrojeva) brojeva."
+//        podaciOIzabranomKolu.text = "Vreme izvlacenja: \(TimeFunctions.vratiVremeUMinutima(timeAsTimestamp: koloKliknuto.drawTime)) | Kolo: \(koloKliknuto.drawId)"
+//
+//        ukupnoIzabranoBrojevaLabela.text = "Ukupno izabrano: \(ukupnoIzabranoBrojeva) brojeva."
     }
     
     func postaviBrojeve() {

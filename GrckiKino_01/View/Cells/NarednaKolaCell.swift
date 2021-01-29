@@ -9,7 +9,7 @@ import UIKit
 
 
 
-class KoloCell: UITableViewCell {
+class NarednaKolaCell: UITableViewCell {
     
 
     var terminSledecegKola = UILabel()

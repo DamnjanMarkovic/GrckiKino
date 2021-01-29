@@ -14,8 +14,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
                window = UIWindow(frame: windowScene.coordinateSpace.bounds)
                window?.windowScene = windowScene
-               let openingPage = OpeningPage()
-               window?.rootViewController = openingPage
+               let openingVC = OpeningVC()
+               window?.rootViewController = openingVC
                window?.makeKeyAndVisible()
                guard let _ = (scene as? UIWindowScene) else { return }
     }

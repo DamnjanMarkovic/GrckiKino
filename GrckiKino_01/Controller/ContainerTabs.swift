@@ -15,8 +15,6 @@ class ContainerTabs: UITabBarController, UITabBarControllerDelegate {
 
         navigationController?.navigationBar.isHidden = false
         configureViewControllers()
-        
-        
     }
     
     
@@ -35,19 +33,26 @@ class ContainerTabs: UITabBarController, UITabBarControllerDelegate {
     
         func configureViewControllers() {
             
-            let talon = constructNavController(unselectedImage: UIImage(systemName: "text.justify")!, selectedImage: UIImage(systemName: "text.justify")!, rootViewController: Talon())
-            let izvlacenjeUzivo = constructNavController(unselectedImage: UIImage(systemName: "person.badge.plus")!, selectedImage: UIImage(systemName: "person.badge.plus")!, rootViewController: IzvlacenjeUzivo())
+            let narednaKola = constructNavController(unselectedImage: UIImage(systemName: "text.justify")!, selectedImage: UIImage(systemName: "text.justify")!, rootViewController: NarednaKola())
             
-            let rezultatiIzvlacenja = constructNavController(unselectedImage: UIImage(systemName: "person.3")!, selectedImage: UIImage(systemName: "person.3")!, rootViewController: RezultatiIzvlacenja())
-            let dodatneIgre = constructNavController(unselectedImage: UIImage(systemName: "square.and.pencil")!, selectedImage: UIImage(systemName: "square.and.pencil")!, rootViewController: DodatneIgre())
+            let kolo = constructNavController(unselectedImage: UIImage(systemName: "text.justify")!, selectedImage: UIImage(systemName: "text.justify")!, rootViewController: KoloVC())
+            
+            let kolaZadan = constructNavController(unselectedImage: UIImage(systemName: "person.3")!, selectedImage: UIImage(systemName: "person.3")!, rootViewController: RezultatiIzvlacenjaZaDan())
+            
+            
+            let uzivo = constructNavController(unselectedImage: UIImage(systemName: "person.badge.plus")!, selectedImage: UIImage(systemName: "person.badge.plus")!, rootViewController: IzvlacenjeUzivo())
+            
+            
+            let igre = constructNavController(unselectedImage: UIImage(systemName: "square.and.pencil")!, selectedImage: UIImage(systemName: "square.and.pencil")!, rootViewController: DodatneIgre())
 
-            talon.title = "talon"
             
-            dodatneIgre.title = "igre"
-            rezultatiIzvlacenja.title = "rezultati"
-            izvlacenjeUzivo.title = "uzivo"
+            narednaKola.title = "naredna kola"
+            kolo.title = "Kolo"
+            kolaZadan.title = "Kola za dan"
+            uzivo.title = "Uzivo"
+            igre.title = "Igre"
             
-            viewControllers = [talon, izvlacenjeUzivo, rezultatiIzvlacenja, dodatneIgre]
+            viewControllers = [narednaKola, kolo, kolaZadan, uzivo, igre]
             tabBar.tintColor = .blue
             
         }

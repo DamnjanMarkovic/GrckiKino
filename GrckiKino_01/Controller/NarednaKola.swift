@@ -22,7 +22,7 @@ import UIKit
 //}
 
 
-class OpeningPage: UIViewController {
+class NarednaKola: UIViewController {
     
     
     // MARK: - kreiranje delova UI
@@ -34,12 +34,6 @@ class OpeningPage: UIViewController {
     var narednaKola = [Kolo]()
     var tableView = UITableView()
     
-    private let mainview: UIView = {
-        let view = UIView()
-        view.clipsToBounds = true
-        view.backgroundColor = .gray
-        return view
-    }()
     
     private let tableStackView: UIStackView = {
         let view = UIStackView()
@@ -47,49 +41,20 @@ class OpeningPage: UIViewController {
         return view
     }()
     
-    
-    let zastavaGrcke: UIImageView = {
-        let iv = UIImageView()
-        iv.image = UIImage(named: "greece-flag")
-        iv.contentMode = .scaleAspectFit
-        iv.layer.cornerRadius = iv.frame.size.width / 2
-        iv.clipsToBounds = true
-        return iv
-    }()
-    
-    
-    let naslovIgre: UILabel = {
-        let label = UILabel()
-        label.layer.cornerRadius = 5
-        label.text = "GRCKI KINO (20/80)"
-        label.adjustsFontSizeToFitWidth = true
-        label.font = UIFont.systemFont(ofSize: 20)
-        label.numberOfLines = 0
-        label.textColor = UIColor.white
-        label.lineBreakMode = .byTruncatingTail
-        label.textAlignment = .center
-        label.layer.borderColor = UIColor.darkGray.cgColor
-        return label
-    }()
-    
-    
-    
-    let lineInBetween: UIView = {
-        let lineVIew = UIView()
-        lineVIew.backgroundColor = .blue
-        return lineVIew
-    }()
-    
 
+
+    
+    // MARK: - funkcije
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.isHidden = true
+        navigationController?.navigationBar.isHidden = false
+        title = "naredna kola"
         view.backgroundColor = UIColor.darkGray
-        createUI()
         configureTableView()
+        setUI()
         vratiSvakoKolo {
             self.tableView.reloadData()
         }
@@ -123,51 +88,27 @@ class OpeningPage: UIViewController {
         
         tableStackView.addSubview(tableView)
         tableView.rowHeight = view.frame.height / 10
-        tableView.register(KoloCell.self, forCellReuseIdentifier: cellIdentifier)
+        tableView.register(NarednaKolaCell.self, forCellReuseIdentifier: cellIdentifier)
         tableView.register(KoloTableHeader.self, forHeaderFooterViewReuseIdentifier: headerIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.set(to: tableStackView)
     }
     
-    func createUI() {
-        
-        
-        view.addSubview(mainview)
-        view.addSubview(tableStackView)
-        mainview.addSubview(zastavaGrcke)
-        mainview.addSubview(naslovIgre)
-        mainview.addSubview(lineInBetween)
-        
-        
-        
-    }
     
-    
-    
-//    func setKolouDefaults()  {
-//        let defaults = UserDefaults.standard
-//        defaults.set(kolo,forKey: "izabranoKolo")
-//        defaults.synchronize()
+//    override func viewDidLayoutSubviews() {
+//        super.viewDidLayoutSubviews()
+//
 //    }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        
-        let screenWidth = view.width
-        let size = screenWidth/4
-        mainview.frame = CGRect(x: 10, y: 50, width: screenWidth-20, height: 50)
-        
-        zastavaGrcke.frame = CGRect(x: 0, y: 10, width: size, height: 30)
-        naslovIgre.frame = CGRect(x: zastavaGrcke.right, y: 10, width: screenWidth/2, height: 30)
-        lineInBetween.frame = CGRect(x: 10, y: naslovIgre.bottom + 5, width: mainview.width-20, height: 1)
-        
-
-        tableStackView.frame = CGRect(x: 0, y: 120, width: view.width, height: view.height-mainview.height)
-        
-    }
     
+    
+    
+    func setUI() {
+        
+        tableStackView.frame = CGRect(x: 0, y: 0, width: view.width, height: view.height)
+        view.addSubview(tableStackView)
+    }
 
     
 
@@ -175,7 +116,9 @@ class OpeningPage: UIViewController {
     
 }
 
-extension OpeningPage: UITableViewDelegate, UITableViewDataSource {
+// MARK: - ekstenzije
+
+extension NarednaKola: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -206,7 +149,7 @@ extension OpeningPage: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
 
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! KoloCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! NarednaKolaCell
         cell.expiryTimeInterval = 10
         cell.set(kolo: narednaKola[indexPath.row])
         return cell
@@ -217,14 +160,15 @@ extension OpeningPage: UITableViewDelegate, UITableViewDataSource {
 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true) //unhighlights row after auto highlight on selection
+        tableView.deselectRow(at: indexPath, animated: true)
         
         let koloKliknuto = narednaKola[indexPath.row]
         DatabaseManager.shared.koloKliknuto = koloKliknuto
         
-        let mainTabVC = ContainerTabs()
-        mainTabVC.modalPresentationStyle = .overFullScreen
-        self.present(mainTabVC, animated: false)
+        let talonVC = Talon()
+        let navController = UINavigationController(rootViewController: talonVC)
+        navController.modalPresentationStyle = .overFullScreen
+        self.present(navController, animated: false)
         
         
         
