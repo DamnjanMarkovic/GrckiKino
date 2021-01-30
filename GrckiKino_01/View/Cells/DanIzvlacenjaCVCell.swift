@@ -14,10 +14,8 @@ class DanIzvlacenjaCVCell: UICollectionViewCell {
         label.textAlignment = .center
         label.textColor = .white
         label.numberOfLines = 0
-//        label.frame = CGRect(x: 0, y: 0, width: 200, height: 200)
         label.layer.borderWidth = 3.0
-        label.layer.borderColor = UIColor.yellow.cgColor
-        label.layer.backgroundColor = UIColor.clear.cgColor
+        label.layer.backgroundColor = UIColor.black.cgColor
         return label
     }()
 
@@ -32,7 +30,6 @@ class DanIzvlacenjaCVCell: UICollectionViewCell {
         
         contentView.clipsToBounds = true
         contentView.layer.cornerRadius = Constants.cornerRadiusTalonCell
-//        contentView.backgroundColor = .blue
         contentView.addSubview(broj)
         
 

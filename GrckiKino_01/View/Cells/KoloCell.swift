@@ -29,7 +29,7 @@ class KoloCell: UICollectionViewCell {
     private func setupViews() {
         contentView.clipsToBounds = true
         contentView.layer.cornerRadius = Constants.cornerRadiusTalonCell
-        contentView.backgroundColor = Constants.colorOriginalTalonCell
+//        contentView.backgroundColor = Constants.colorOriginalTalonCell
         contentView.addSubview(broj)
 
     }
@@ -58,7 +58,7 @@ class KoloCell: UICollectionViewCell {
     }
 
     func setup(with brojPristigao : Int) {
-        
+        broj.layer.borderColor = Constants.randomColor().cgColor
         broj.text = "\(brojPristigao)"
 
         

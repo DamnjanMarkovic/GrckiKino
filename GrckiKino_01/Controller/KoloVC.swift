@@ -27,12 +27,13 @@ class KoloVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .yellow
+        view.backgroundColor = .black
         title = "Kolo"
         navigationController?.navigationBar.isHidden = false
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "text.justify")!.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(vratiNekoDrugoKolo))
-        setUI();
+        
         unosBrojaKola()
+        
         
 
     }
@@ -42,7 +43,8 @@ class KoloVC: UIViewController {
         collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(KoloCell.self, forCellWithReuseIdentifier: cellKolo)
-        collectionView.backgroundColor = UIColor.darkGray
+        collectionView.register(KoloHeader.self, forSupplementaryViewOfKind:
+                                    UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerKolo)
         collectionView.dataSource = self
         collectionView.delegate = self
         view.addSubview(collectionView)
@@ -54,11 +56,11 @@ class KoloVC: UIViewController {
     }
     
     func unosBrojaKola() {
-        showInputDialog(title: "Add number",
-                        subtitle: "Please enter the new number below.",
-                        actionTitle: "Add",
-                        cancelTitle: "Cancel",
-                        inputPlaceholder: "New number",
+        showInputDialog(title: "Unesite broj kola",
+                        subtitle: "(na primer: 856666)",
+                        actionTitle: "Unesi",
+                        cancelTitle: "Odustani",
+                        inputPlaceholder: "broj kola",
                         inputKeyboardType: .numberPad, actionHandler:
                             { (input:String?) in
                                 
@@ -87,6 +89,7 @@ class KoloVC: UIViewController {
                 do {
                     let koloPoIDjuStiglo = try JSONDecoder().decode(ZavrsenoKolo.self, from: data!)
                     DispatchQueue.main.async {
+                        self.setUI();
                         completed()
                         self.koloPoIDju = koloPoIDjuStiglo
                         self.listaIzabranihBrojeva = koloPoIDjuStiglo.winningNumbers.list
@@ -111,7 +114,6 @@ extension KoloVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollec
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellKolo, for: indexPath as IndexPath) as! KoloCell
         cell.setup(with: listaIzabranihBrojeva[indexPath.row])
-        cell.backgroundColor = .blue
         return cell
         
     }
@@ -119,7 +121,25 @@ extension KoloVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollec
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return listaIzabranihBrojeva.count
     }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind:
+        String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier:
+                                                                        headerKolo, for: indexPath) as! KoloHeader
+        
+        header.headerLabela.text = "Kolo broj: \(koloPoIDju.drawId) od \(TimeFunctions.vratiVremeUMinutima(timeAsTimestamp: koloPoIDju.drawTime)) dana \(TimeFunctions.vratiDan(timeAsTimestamp: koloPoIDju.drawTime)). "
 
+            return header
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: view.width, height: 50)
+    }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         

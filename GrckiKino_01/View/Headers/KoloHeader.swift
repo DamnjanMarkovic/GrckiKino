@@ -1,15 +1,14 @@
 //
-//  IzvlacenjeHeader.swift
+//  KoloHeader.swift
 //  GrckiKino_01
 //
-//  Created by Damnjan Markovic on 29.1.21..
+//  Created by Damnjan Markovic on 30.1.21..
 //
 
 import UIKit
 
-class DanIzvlacenjaHeader: UICollectionViewCell {
-
-
+class KoloHeader: UICollectionViewCell {
+    
     override init(frame: CGRect)    {
         super.init(frame: frame)
         setupHeaderViews()

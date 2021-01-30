@@ -19,6 +19,24 @@ class TimeFunctions {
         return formatter.string(from: date)
     }
     
+    static func vratiDan(timeAsTimestamp: Double) -> String {
+        let truncatedTime = Int(timeAsTimestamp / 1000)
+        let date = Date(timeIntervalSince1970: TimeInterval(truncatedTime))
+        let formatter = DateFormatter()
+        formatter.timeZone = NSTimeZone.local
+        formatter.dateFormat = "dd. MM. y"
+        return formatter.string(from: date)
+    }
+    
+    static func vratiIzabraniDan(timeAsTimestamp: Double) -> String {
+        let truncatedTime = Int(timeAsTimestamp / 1000)
+        let date = Date(timeIntervalSince1970: TimeInterval(truncatedTime))
+        let formatter = DateFormatter()
+        formatter.timeZone = NSTimeZone.local
+        formatter.dateFormat = "dd. MM. y"
+        return formatter.string(from: date)
+    }
+    
     
     
     
