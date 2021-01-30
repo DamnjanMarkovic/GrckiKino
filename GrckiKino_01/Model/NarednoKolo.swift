@@ -7,8 +7,9 @@
 
 import Foundation
 
-struct Kolo: Decodable {
+struct NarednoKolo: Decodable {
 
+    
     let gameId: Int
     let drawId: Int
     let drawTime: Double
@@ -17,7 +18,8 @@ struct Kolo: Decodable {
     let visualDraw: Int
     let pricePoints: PricePoints
     let wagerStatistics: WagerStatistics
-
+    
+    
 }
 
 

@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6614154425C5E5A300F60413 /* NarednaKolaDownloading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6614154325C5E5A300F60413 /* NarednaKolaDownloading.swift */; };
+		6614155525C5F70E00F60413 /* KoloPoID_uDownloading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6614155425C5F70E00F60413 /* KoloPoID_uDownloading.swift */; };
+		6614156325C5FDC600F60413 /* KoloPoDatumuDownloading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6614156225C5FDC600F60413 /* KoloPoDatumuDownloading.swift */; };
+		6614156B25C6078D00F60413 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6614156A25C6078D00F60413 /* Error.swift */; };
+		6614157025C608FC00F60413 /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6614156F25C608FC00F60413 /* JSONParser.swift */; };
 		6625E83E25C1DE6A00708D68 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6625E83D25C1DE6A00708D68 /* AppDelegate.swift */; };
 		6625E84025C1DE6A00708D68 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6625E83F25C1DE6A00708D68 /* SceneDelegate.swift */; };
 		6625E84725C1DE6B00708D68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6625E84625C1DE6B00708D68 /* Assets.xcassets */; };
@@ -14,26 +19,26 @@
 		6625E85525C1DE6B00708D68 /* GrckiKino_01Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6625E85425C1DE6B00708D68 /* GrckiKino_01Tests.swift */; };
 		6625E86025C1DE6C00708D68 /* GrckiKino_01UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6625E85F25C1DE6C00708D68 /* GrckiKino_01UITests.swift */; };
 		6625E8A725C1E68000708D68 /* NarednaKola.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6625E8A625C1E68000708D68 /* NarednaKola.swift */; };
-		6625E8B025C1EA9D00708D68 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6625E8AF25C1EA9D00708D68 /* Extensions.swift */; };
+		6625E8B025C1EA9D00708D68 /* UIEkstenzije.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6625E8AF25C1EA9D00708D68 /* UIEkstenzije.swift */; };
 		6625E8B825C1EAD100708D68 /* AlertInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6625E8B725C1EAD100708D68 /* AlertInfo.swift */; };
 		6625E8BD25C1EB2C00708D68 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6625E8BC25C1EB2C00708D68 /* Constants.swift */; };
-		6625E8C325C1EBA000708D68 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6625E8C225C1EBA000708D68 /* DatabaseManager.swift */; };
-		6625E8CB25C1ED2300708D68 /* Kolo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6625E8CA25C1ED2300708D68 /* Kolo.swift */; };
+		6625E8C325C1EBA000708D68 /* Singletone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6625E8C225C1EBA000708D68 /* Singletone.swift */; };
+		6625E8CB25C1ED2300708D68 /* NarednoKolo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6625E8CA25C1ED2300708D68 /* NarednoKolo.swift */; };
 		6625E8D525C1F5D200708D68 /* TimeFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6625E8D425C1F5D200708D68 /* TimeFunctions.swift */; };
 		6625E8DC25C2140900708D68 /* NarednaKolaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6625E8DB25C2140900708D68 /* NarednaKolaCell.swift */; };
 		6625E8E725C22BEA00708D68 /* Talon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6625E8E625C22BEA00708D68 /* Talon.swift */; };
 		6625E8EC25C22E1200708D68 /* ContainerTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6625E8EB25C22E1200708D68 /* ContainerTabs.swift */; };
 		6625E8F125C22E9100708D68 /* DodatneIgre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6625E8F025C22E9100708D68 /* DodatneIgre.swift */; };
 		6625E8F625C22EB100708D68 /* IzvlacenjeUzivo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6625E8F525C22EB100708D68 /* IzvlacenjeUzivo.swift */; };
-		6625E8FB25C22ED200708D68 /* KoloVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6625E8FA25C22ED200708D68 /* KoloVC.swift */; };
+		6625E8FB25C22ED200708D68 /* KoloPoID_u.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6625E8FA25C22ED200708D68 /* KoloPoID_u.swift */; };
 		662C0E1325C3CC69005D4726 /* DanIzvlacenjaHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662C0E1225C3CC69005D4726 /* DanIzvlacenjaHeader.swift */; };
-		662C0E1B25C3CEF7005D4726 /* ZavrsenoKolo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662C0E1A25C3CEF7005D4726 /* ZavrsenoKolo.swift */; };
+		662C0E1B25C3CEF7005D4726 /* KolaZaIzabraniDan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662C0E1A25C3CEF7005D4726 /* KolaZaIzabraniDan.swift */; };
 		6630978825C29097006C78B8 /* NarednaKolaHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6630978725C29097006C78B8 /* NarednaKolaHeader.swift */; };
 		6635499425C2BC4000CCD205 /* TalonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6635499325C2BC4000CCD205 /* TalonCell.swift */; };
-		6654DC8A25C555D000CE727E /* KoloHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6654DC8925C555D000CE727E /* KoloHeader.swift */; };
+		6654DC8A25C555D000CE727E /* KoloPoID_uHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6654DC8925C555D000CE727E /* KoloPoID_uHeader.swift */; };
 		66E6D34F25C48CDB004FD2C4 /* OpeningVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E6D34E25C48CDB004FD2C4 /* OpeningVC.swift */; };
 		66E6D36125C49B42004FD2C4 /* DanIzvlacenjaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E6D36025C49B42004FD2C4 /* DanIzvlacenjaVC.swift */; };
-		66E6D36F25C4ACA9004FD2C4 /* KoloCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E6D36E25C4ACA9004FD2C4 /* KoloCell.swift */; };
+		66E6D36F25C4ACA9004FD2C4 /* KoloPoID_uCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E6D36E25C4ACA9004FD2C4 /* KoloPoID_uCell.swift */; };
 		66E6D38925C4B498004FD2C4 /* DanIzvlacenjaTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E6D38825C4B498004FD2C4 /* DanIzvlacenjaTableCell.swift */; };
 		66E6D39C25C4CD72004FD2C4 /* DanIzvlacenjaCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E6D39B25C4CD72004FD2C4 /* DanIzvlacenjaCVCell.swift */; };
 /* End PBXBuildFile section */
@@ -56,6 +61,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6614154325C5E5A300F60413 /* NarednaKolaDownloading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NarednaKolaDownloading.swift; sourceTree = "<group>"; };
+		6614155425C5F70E00F60413 /* KoloPoID_uDownloading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoloPoID_uDownloading.swift; sourceTree = "<group>"; };
+		6614156225C5FDC600F60413 /* KoloPoDatumuDownloading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoloPoDatumuDownloading.swift; sourceTree = "<group>"; };
+		6614156A25C6078D00F60413 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		6614156F25C608FC00F60413 /* JSONParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
 		6625E83A25C1DE6A00708D68 /* GrckiKino_01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GrckiKino_01.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6625E83D25C1DE6A00708D68 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6625E83F25C1DE6A00708D68 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,26 +79,26 @@
 		6625E85F25C1DE6C00708D68 /* GrckiKino_01UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrckiKino_01UITests.swift; sourceTree = "<group>"; };
 		6625E86125C1DE6C00708D68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6625E8A625C1E68000708D68 /* NarednaKola.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NarednaKola.swift; sourceTree = "<group>"; };
-		6625E8AF25C1EA9D00708D68 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		6625E8AF25C1EA9D00708D68 /* UIEkstenzije.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIEkstenzije.swift; sourceTree = "<group>"; };
 		6625E8B725C1EAD100708D68 /* AlertInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertInfo.swift; sourceTree = "<group>"; };
 		6625E8BC25C1EB2C00708D68 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		6625E8C225C1EBA000708D68 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
-		6625E8CA25C1ED2300708D68 /* Kolo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kolo.swift; sourceTree = "<group>"; };
+		6625E8C225C1EBA000708D68 /* Singletone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singletone.swift; sourceTree = "<group>"; };
+		6625E8CA25C1ED2300708D68 /* NarednoKolo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NarednoKolo.swift; sourceTree = "<group>"; };
 		6625E8D425C1F5D200708D68 /* TimeFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFunctions.swift; sourceTree = "<group>"; };
 		6625E8DB25C2140900708D68 /* NarednaKolaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NarednaKolaCell.swift; sourceTree = "<group>"; };
 		6625E8E625C22BEA00708D68 /* Talon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Talon.swift; sourceTree = "<group>"; };
 		6625E8EB25C22E1200708D68 /* ContainerTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerTabs.swift; sourceTree = "<group>"; };
 		6625E8F025C22E9100708D68 /* DodatneIgre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DodatneIgre.swift; sourceTree = "<group>"; };
 		6625E8F525C22EB100708D68 /* IzvlacenjeUzivo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IzvlacenjeUzivo.swift; sourceTree = "<group>"; };
-		6625E8FA25C22ED200708D68 /* KoloVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoloVC.swift; sourceTree = "<group>"; };
+		6625E8FA25C22ED200708D68 /* KoloPoID_u.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoloPoID_u.swift; sourceTree = "<group>"; };
 		662C0E1225C3CC69005D4726 /* DanIzvlacenjaHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DanIzvlacenjaHeader.swift; sourceTree = "<group>"; };
-		662C0E1A25C3CEF7005D4726 /* ZavrsenoKolo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZavrsenoKolo.swift; sourceTree = "<group>"; };
+		662C0E1A25C3CEF7005D4726 /* KolaZaIzabraniDan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KolaZaIzabraniDan.swift; sourceTree = "<group>"; };
 		6630978725C29097006C78B8 /* NarednaKolaHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NarednaKolaHeader.swift; sourceTree = "<group>"; };
 		6635499325C2BC4000CCD205 /* TalonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalonCell.swift; sourceTree = "<group>"; };
-		6654DC8925C555D000CE727E /* KoloHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoloHeader.swift; sourceTree = "<group>"; };
+		6654DC8925C555D000CE727E /* KoloPoID_uHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoloPoID_uHeader.swift; sourceTree = "<group>"; };
 		66E6D34E25C48CDB004FD2C4 /* OpeningVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpeningVC.swift; sourceTree = "<group>"; };
 		66E6D36025C49B42004FD2C4 /* DanIzvlacenjaVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DanIzvlacenjaVC.swift; sourceTree = "<group>"; };
-		66E6D36E25C4ACA9004FD2C4 /* KoloCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoloCell.swift; sourceTree = "<group>"; };
+		66E6D36E25C4ACA9004FD2C4 /* KoloPoID_uCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoloPoID_uCell.swift; sourceTree = "<group>"; };
 		66E6D38825C4B498004FD2C4 /* DanIzvlacenjaTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DanIzvlacenjaTableCell.swift; sourceTree = "<group>"; };
 		66E6D39B25C4CD72004FD2C4 /* DanIzvlacenjaCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DanIzvlacenjaCVCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -177,8 +187,8 @@
 			isa = PBXGroup;
 			children = (
 				6625E8BC25C1EB2C00708D68 /* Constants.swift */,
-				6625E8CA25C1ED2300708D68 /* Kolo.swift */,
-				662C0E1A25C3CEF7005D4726 /* ZavrsenoKolo.swift */,
+				6625E8CA25C1ED2300708D68 /* NarednoKolo.swift */,
+				662C0E1A25C3CEF7005D4726 /* KolaZaIzabraniDan.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -199,7 +209,7 @@
 				6625E8EB25C22E1200708D68 /* ContainerTabs.swift */,
 				6625E8A625C1E68000708D68 /* NarednaKola.swift */,
 				6625E8E625C22BEA00708D68 /* Talon.swift */,
-				6625E8FA25C22ED200708D68 /* KoloVC.swift */,
+				6625E8FA25C22ED200708D68 /* KoloPoID_u.swift */,
 				66E6D36025C49B42004FD2C4 /* DanIzvlacenjaVC.swift */,
 				6625E8F525C22EB100708D68 /* IzvlacenjeUzivo.swift */,
 				6625E8F025C22E9100708D68 /* DodatneIgre.swift */,
@@ -210,9 +220,10 @@
 		6625E8AE25C1EA7200708D68 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				6625E8AF25C1EA9D00708D68 /* Extensions.swift */,
+				6625E8AF25C1EA9D00708D68 /* UIEkstenzije.swift */,
 				6625E8B725C1EAD100708D68 /* AlertInfo.swift */,
 				6625E8D425C1F5D200708D68 /* TimeFunctions.swift */,
+				6614156A25C6078D00F60413 /* Error.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -220,7 +231,11 @@
 		6625E8C125C1EB8400708D68 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				6625E8C225C1EBA000708D68 /* DatabaseManager.swift */,
+				6625E8C225C1EBA000708D68 /* Singletone.swift */,
+				6614154325C5E5A300F60413 /* NarednaKolaDownloading.swift */,
+				6614155425C5F70E00F60413 /* KoloPoID_uDownloading.swift */,
+				6614156225C5FDC600F60413 /* KoloPoDatumuDownloading.swift */,
+				6614156F25C608FC00F60413 /* JSONParser.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -230,7 +245,7 @@
 			children = (
 				6630978725C29097006C78B8 /* NarednaKolaHeader.swift */,
 				662C0E1225C3CC69005D4726 /* DanIzvlacenjaHeader.swift */,
-				6654DC8925C555D000CE727E /* KoloHeader.swift */,
+				6654DC8925C555D000CE727E /* KoloPoID_uHeader.swift */,
 			);
 			path = Headers;
 			sourceTree = "<group>";
@@ -240,7 +255,7 @@
 			children = (
 				6625E8DB25C2140900708D68 /* NarednaKolaCell.swift */,
 				6635499325C2BC4000CCD205 /* TalonCell.swift */,
-				66E6D36E25C4ACA9004FD2C4 /* KoloCell.swift */,
+				66E6D36E25C4ACA9004FD2C4 /* KoloPoID_uCell.swift */,
 				66E6D38825C4B498004FD2C4 /* DanIzvlacenjaTableCell.swift */,
 				66E6D39B25C4CD72004FD2C4 /* DanIzvlacenjaCVCell.swift */,
 			);
@@ -377,30 +392,35 @@
 			buildActionMask = 2147483647;
 			files = (
 				6630978825C29097006C78B8 /* NarednaKolaHeader.swift in Sources */,
+				6614154425C5E5A300F60413 /* NarednaKolaDownloading.swift in Sources */,
 				66E6D38925C4B498004FD2C4 /* DanIzvlacenjaTableCell.swift in Sources */,
 				66E6D39C25C4CD72004FD2C4 /* DanIzvlacenjaCVCell.swift in Sources */,
 				6625E8F125C22E9100708D68 /* DodatneIgre.swift in Sources */,
 				6625E8A725C1E68000708D68 /* NarednaKola.swift in Sources */,
 				6625E8B825C1EAD100708D68 /* AlertInfo.swift in Sources */,
 				6625E8D525C1F5D200708D68 /* TimeFunctions.swift in Sources */,
-				6625E8CB25C1ED2300708D68 /* Kolo.swift in Sources */,
+				6614155525C5F70E00F60413 /* KoloPoID_uDownloading.swift in Sources */,
+				6625E8CB25C1ED2300708D68 /* NarednoKolo.swift in Sources */,
 				6625E83E25C1DE6A00708D68 /* AppDelegate.swift in Sources */,
-				662C0E1B25C3CEF7005D4726 /* ZavrsenoKolo.swift in Sources */,
+				662C0E1B25C3CEF7005D4726 /* KolaZaIzabraniDan.swift in Sources */,
 				66E6D36125C49B42004FD2C4 /* DanIzvlacenjaVC.swift in Sources */,
-				6654DC8A25C555D000CE727E /* KoloHeader.swift in Sources */,
-				66E6D36F25C4ACA9004FD2C4 /* KoloCell.swift in Sources */,
+				6654DC8A25C555D000CE727E /* KoloPoID_uHeader.swift in Sources */,
+				66E6D36F25C4ACA9004FD2C4 /* KoloPoID_uCell.swift in Sources */,
 				6625E84025C1DE6A00708D68 /* SceneDelegate.swift in Sources */,
 				662C0E1325C3CC69005D4726 /* DanIzvlacenjaHeader.swift in Sources */,
 				6635499425C2BC4000CCD205 /* TalonCell.swift in Sources */,
+				6614156325C5FDC600F60413 /* KoloPoDatumuDownloading.swift in Sources */,
 				6625E8EC25C22E1200708D68 /* ContainerTabs.swift in Sources */,
 				66E6D34F25C48CDB004FD2C4 /* OpeningVC.swift in Sources */,
+				6614156B25C6078D00F60413 /* Error.swift in Sources */,
 				6625E8DC25C2140900708D68 /* NarednaKolaCell.swift in Sources */,
 				6625E8E725C22BEA00708D68 /* Talon.swift in Sources */,
 				6625E8F625C22EB100708D68 /* IzvlacenjeUzivo.swift in Sources */,
-				6625E8B025C1EA9D00708D68 /* Extensions.swift in Sources */,
+				6625E8B025C1EA9D00708D68 /* UIEkstenzije.swift in Sources */,
+				6614157025C608FC00F60413 /* JSONParser.swift in Sources */,
 				6625E8BD25C1EB2C00708D68 /* Constants.swift in Sources */,
-				6625E8C325C1EBA000708D68 /* DatabaseManager.swift in Sources */,
-				6625E8FB25C22ED200708D68 /* KoloVC.swift in Sources */,
+				6625E8C325C1EBA000708D68 /* Singletone.swift in Sources */,
+				6625E8FB25C22ED200708D68 /* KoloPoID_u.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,6 +7,16 @@
 
 import UIKit
 
+extension DanIzvlacenjaVC: KolaPoDatumuDownloadingingDelegate {
+    func vratikolaPoDatumuPrekoProtokola(_ koloPoDatumuDownloading: KoloPoDatumuDownloading, kolaZaIzabraniDan: KolaZaIzabraniDan, kolaUDanu: [ZavrsenoKolo]) {
+        DispatchQueue.main.async {
+            self.kolaZaIzabraniDan = kolaZaIzabraniDan
+            self.kolaUDanu = kolaUDanu
+        }
+    }
+}
+
+
 class DanIzvlacenjaVC: UIViewController {
     
     var collectionView: UICollectionView = {
@@ -49,15 +59,15 @@ class DanIzvlacenjaVC: UIViewController {
     var kolaZaIzabraniDan: KolaZaIzabraniDan!
     var kolaUDanu = [ZavrsenoKolo]()
     var tableView = UITableView()
+    var delegat = KoloPoDatumuDownloading()
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Kola za dan"
         view.backgroundColor = .black
+        delegat.delegate = self
         configureDateView()
-        
-
         
     }
 
@@ -70,36 +80,23 @@ class DanIzvlacenjaVC: UIViewController {
         let formatter = DateFormatter()
         formatter.dateFormat = "y-MM-dd"
         izabraniDan = formatter.string(from: scheduledTimeForNotification)
-        
-        vratiKolaZaIzabraniDan {
+        vratiKola()
 
-            self.tableView.reloadData()
-            self.configureTableView()
+    }
+    
+    func vratiKola() {
+        delegat.vratiKolaPoDatumu(datum: izabraniDan) { success in
+            if success {
+                DispatchQueue.main.async {
+                    
+                    self.tableView.reloadData()
+                    self.configureTableView()
+                }
+            }
         }
     }
     
-    func vratiKolaZaIzabraniDan(completed: @escaping () -> ()) {
 
-
-        let url = URL (string: "\(Constants.apiRealizovanoKolo)draw-date/\(izabraniDan!)/\(izabraniDan!)")
-
-        var request = URLRequest(url: url!)
-        request.httpMethod = "GET"
-        let session = URLSession.shared
-        let _: Void = session.dataTask(with: request) { (data, response, error) in
-            if error == nil {
-                do {
-                    self.kolaZaIzabraniDan = try JSONDecoder().decode(KolaZaIzabraniDan.self, from: data!)
-                    DispatchQueue.main.async {
-                        self.kolaUDanu = self.kolaZaIzabraniDan.content
-                        completed()
-                    }
-                }catch{
-                    print("Json error")
-                }
-            }
-        }.resume()
-    }
     
     func configureDateView() {
         

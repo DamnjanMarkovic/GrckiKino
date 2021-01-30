@@ -46,8 +46,5 @@ struct Constants {
     static var apiRealizovanoKolo = "https://api.opap.gr/draws/v3.0/1100/"
 }
 
-enum LayoutConstant {
-    static let spacing: CGFloat = 3
-    static let itemHeight: CGFloat = 410.0
-}
+
 

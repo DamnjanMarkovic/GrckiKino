@@ -7,7 +7,7 @@
 
 import UIKit
 
-class KoloHeader: UICollectionViewCell {
+class KoloPoID_uHeader: UICollectionViewCell {
     
     override init(frame: CGRect)    {
         super.init(frame: frame)

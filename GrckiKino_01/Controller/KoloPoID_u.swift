@@ -5,9 +5,22 @@
 //  Created by Damnjan Markovic on 28.1.21..
 //
 
+extension KoloPoID_u: KoloPoID_uDownloadingingDelegate {
+    
+    func vratikoloPoID_uPrekoProtokola(_ koloDownloading: KoloPoID_uDownloading, koloPoIDju: ZavrsenoKolo, listaIzabranihBrojeva: [Int]) {
+        DispatchQueue.main.async {
+            self.koloPoIDju = koloPoIDju
+            self.listaIzabranihBrojeva = listaIzabranihBrojeva
+        }
+    }
+   
+}
+
+
+
 import UIKit
 
-class KoloVC: UIViewController {
+class KoloPoID_u: UIViewController {
 
     private let cellKolo = "cellRezultat"
     private let headerKolo = "headerRezultat"
@@ -22,6 +35,7 @@ class KoloVC: UIViewController {
     var koloPoIDju: ZavrsenoKolo!
     var brojKola: Int!
     var listaIzabranihBrojeva = [Int]()
+    var delegat = KoloPoID_uDownloading()
     
     
     
@@ -30,11 +44,9 @@ class KoloVC: UIViewController {
         view.backgroundColor = .black
         title = "Kolo"
         navigationController?.navigationBar.isHidden = false
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "text.justify")!.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(vratiNekoDrugoKolo))
-        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus.message")!.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(vratiNekoDrugoKolo))
+        delegat.delegate = self
         unosBrojaKola()
-        
-        
 
     }
     
@@ -42,8 +54,8 @@ class KoloVC: UIViewController {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(KoloCell.self, forCellWithReuseIdentifier: cellKolo)
-        collectionView.register(KoloHeader.self, forSupplementaryViewOfKind:
+        collectionView.register(KoloPoID_uCell.self, forCellWithReuseIdentifier: cellKolo)
+        collectionView.register(KoloPoID_uHeader.self, forSupplementaryViewOfKind:
                                     UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerKolo)
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -62,57 +74,38 @@ class KoloVC: UIViewController {
                         cancelTitle: "Odustani",
                         inputPlaceholder: "broj kola",
                         inputKeyboardType: .numberPad, actionHandler:
-                            { (input:String?) in
+                            { [weak self] (input:String?) in
                                 
                                 if let myNumber = NumberFormatter().number(from: input ?? "0") {
-                                    self.brojKola = myNumber.intValue
-                                    self.vratiRealizovanoKolo {
-                                        self.collectionView.reloadData()
-                                    }
-                                    
+                                    self?.brojKola = myNumber.intValue
+                                    self?.vratiKoloPoID_u()
+
                                   } else {
-                                    
+                                    let ac = UIAlertController(title: "Morate uneti pozitivan, ceo broj.", message: nil, preferredStyle: .alert)
+                                    ac.addAction(UIAlertAction(title: "Dobro, smaracu!", style: .default, handler: nil))
+                                    ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                                    self?.present(ac, animated: true)
                                   }
                             })
     }
-
     
-    func vratiRealizovanoKolo(completed: @escaping () -> ()) {
-//        let brojKola = "856666"
-        let url = URL (string: "\(Constants.apiRealizovanoKolo)/\(brojKola ?? 85666)/")
-        
-        var request = URLRequest(url: url!)
-        request.httpMethod = "GET"
-        let session = URLSession.shared
-        let _: Void = session.dataTask(with: request) { (data, response, error) in
-            if error == nil {
-                do {
-                    let koloPoIDjuStiglo = try JSONDecoder().decode(ZavrsenoKolo.self, from: data!)
-                    DispatchQueue.main.async {
-                        self.setUI();
-                        completed()
-                        self.koloPoIDju = koloPoIDjuStiglo
-                        self.listaIzabranihBrojeva = koloPoIDjuStiglo.winningNumbers.list
-                        print("sve ok")
-
-
-                    }
-                }catch{
-                    print("Json error")
+    
+    func vratiKoloPoID_u() {
+        delegat.vratiKoloPoID_u(brojKola: brojKola) { success in
+            if success {
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                    self.setUI()
                 }
             }
-        }.resume()
+        }
     }
-    
-
-    
-
 
 }
 
-extension KoloVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+extension KoloPoID_u: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellKolo, for: indexPath as IndexPath) as! KoloCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellKolo, for: indexPath as IndexPath) as! KoloPoID_uCell
         cell.setup(with: listaIzabranihBrojeva[indexPath.row])
         return cell
         
@@ -126,7 +119,7 @@ extension KoloVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollec
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind:
         String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier:
-                                                                        headerKolo, for: indexPath) as! KoloHeader
+                                                                        headerKolo, for: indexPath) as! KoloPoID_uHeader
         
         header.headerLabela.text = "Kolo broj: \(koloPoIDju.drawId) od \(TimeFunctions.vratiVremeUMinutima(timeAsTimestamp: koloPoIDju.drawTime)) dana \(TimeFunctions.vratiDan(timeAsTimestamp: koloPoIDju.drawTime)). "
 
@@ -169,10 +162,6 @@ extension KoloVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollec
         return LayoutConstant.spacing
     }
 }
-
-
-
-
 
 
 extension UIViewController {

@@ -7,8 +7,15 @@
 
 import Foundation
 
-struct ZavrsenoKolo: Decodable {
 
+struct KolaZaIzabraniDan: Decodable {
+    let content: [ZavrsenoKolo]
+}
+
+
+struct ZavrsenoKolo: Decodable {
+    
+    
     let gameId: Int
     let drawId: Int
     let drawTime: Double
@@ -17,6 +24,7 @@ struct ZavrsenoKolo: Decodable {
     let visualDraw: Int
     let pricePoints: PricePoints
     let winningNumbers: WinningNumbers
+    
 
 }
 
@@ -27,9 +35,7 @@ struct WinningNumbers: Decodable {
     
 }
 
-struct KolaZaIzabraniDan: Decodable {
-    let content: [ZavrsenoKolo]
-}
+
 
 
 

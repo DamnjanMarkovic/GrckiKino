@@ -9,17 +9,13 @@ import UIKit
 
 
 
-//extension OpeningPage: KoloGettingDelegate {
-//    func vratiSvaKola(_ taskHandling: TasksHandling, post: [Task], dictionary: [String : [Task]], sectionNames: [String], dictionaryAll: [String : [Task]], sectionNamesAll: [String]) {
-//
-//        DispatchQueue.main.async {
-//            self.post = post
-//            self.twoDimensionalArray = dictionary
-//            self.twoDimensionalArrayBackUp = dictionary
-//            self.sectionNames = sectionNames
-//        }
-//    }
-//}
+extension NarednaKola: NarednaKolaDownloadingDelegate {
+    func vratiNarednaKolaPrekoProtokola(_ koloDownloading: NarednaKolaDownloading, narednaKola: [NarednoKolo]) {        
+        DispatchQueue.main.async {
+            self.narednaKola = narednaKola
+        }
+    }
+}
 
 
 class NarednaKola: UIViewController {
@@ -31,8 +27,10 @@ class NarednaKola: UIViewController {
     private let cellIdentifier = "cellKolo"
     private let headerIdentifier = "koloTableHeader"
     
-    var narednaKola = [Kolo]()
+    var narednaKola = [NarednoKolo]()
     var tableView = UITableView()
+    
+    var delegat = NarednaKolaDownloading()
     
     
     private let tableStackView: UIStackView = {
@@ -46,42 +44,28 @@ class NarednaKola: UIViewController {
     
     // MARK: - funkcije
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = false
         title = "naredna kola"
         configureTableView()
+        delegat.delegate = self
+        vratiKola()
         setUI()
-        vratiSvakoKolo {
-            self.tableView.reloadData()
-        }
 
     }
     
-
-    
-    func vratiSvakoKolo(completed: @escaping () -> ()) {
-        
-        let url = URL (string: Constants.apiPregledNarednihKola)
-        var request = URLRequest(url: url!)
-        request.httpMethod = "GET"
-        let session = URLSession.shared
-        let _: Void = session.dataTask(with: request) { (data, response, error) in
-            if error == nil {
-                do {
-                    self.narednaKola = try JSONDecoder().decode([Kolo].self, from: data!)
-                    DispatchQueue.main.async {
-                        completed()
-                        
-                    }
-                }catch{
-                    print("Json error")
+    func vratiKola() {
+        delegat.vratiNarednaKola() { success in
+            if success {
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
                 }
             }
-        }.resume()
+        }
     }
+    
+
     
     func configureTableView() {
 
@@ -104,12 +88,9 @@ class NarednaKola: UIViewController {
     }
 
     
-
-    
-    
 }
 
-// MARK: - ekstenzije
+// MARK: - ekstenzija, TableView
 
 extension NarednaKola: UITableViewDelegate, UITableViewDataSource {
     
@@ -124,30 +105,24 @@ extension NarednaKola: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 
         let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: headerIdentifier) as! NarednaKolaHeader
-        view.vremeIzvlacenja.text = "Vreme izvlacenja"
-        view.preostaloZaUplatu.text = "Preostalo za uplatu"
         return view
     }
     
-
-
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return narednaKola.count
     }
     
-    
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
 
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! NarednaKolaCell
-        
         if (((narednaKola[indexPath.row].drawTime - (Double(TimeFunctions.vratiVremeSada())))/1000) < 300) {
             cell.preostaloZaUplatu.textColor = .red
         }
-        cell.vremeIzvlacenja.text = TimeFunctions.vratiVremeUMinutima(timeAsTimestamp: narednaKola[indexPath.row].drawTime)
         
+        cell.vremeIzvlacenja.text = TimeFunctions.vratiVremeUMinutima(timeAsTimestamp: narednaKola[indexPath.row].drawTime)
+
         cell.expiryTimeInterval = ((narednaKola[indexPath.row].drawTime - (Double(TimeFunctions.vratiVremeSada())))/1000)
         
 
@@ -156,20 +131,17 @@ extension NarednaKola: UITableViewDelegate, UITableViewDataSource {
         
     }
     
-
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let koloKliknuto = narednaKola[indexPath.row]
-        DatabaseManager.shared.koloKliknuto = koloKliknuto
+        Singletone.Instanca.koloKliknuto = koloKliknuto
         
         let talonVC = Talon()
         let navController = UINavigationController(rootViewController: talonVC)
         navController.modalPresentationStyle = .overFullScreen
         self.present(navController, animated: false)
         
-
     }
     
 }

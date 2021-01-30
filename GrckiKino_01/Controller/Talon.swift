@@ -9,7 +9,7 @@ import UIKit
 
 class Talon: UIViewController {
 
-    var koloKliknuto: Kolo!
+    var koloKliknuto: NarednoKolo!
     let collectionCellIdentifier = "collectionCellIdentifier"
     var listaSvihBrojeva = [Int]()
     var listaIzabranihBrojeva = [Int]()
@@ -20,6 +20,9 @@ class Talon: UIViewController {
             ukupnoIzabranoBrojevaLabela.text =  "Izabrano brojeva: \n\(ukupnoIzabranoBrojeva)"
         }
     }
+    
+    //MARK: - UI Postavke, elementi
+    
     
     var podaciOIzabranomKolu: UILabel = {
         let label = UILabel(frame: .zero)
@@ -45,7 +48,6 @@ class Talon: UIViewController {
     }()
     
     let slucajniBrojevi: UIButton = {
-        
         
         let image = UIImage(systemName: "increase.quotelevel") as UIImage?
         let button   = UIButton(type: UIButton.ButtonType.custom) as UIButton
@@ -217,9 +219,7 @@ class Talon: UIViewController {
         label.numberOfLines = 0
         return label
     }()
-    
-    
-    
+
     
     var collectionView: UICollectionView = {
         let viewLayout = UICollectionViewFlowLayout()
@@ -237,20 +237,22 @@ class Talon: UIViewController {
     }()
     
     
+    //MARK: -- Funkcije
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Izaberi i posalji brojeve!"
         view.backgroundColor = .darkGray
         navigationController?.navigationBar.isHidden = false
-        koloKliknuto = DatabaseManager.shared.koloKliknuto
+        koloKliknuto = Singletone.Instanca.koloKliknuto
         postaviUI()
         postaviInformacije()
 
-        navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .close, target: self, action: #selector(vratiSe))
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "text.justify")!.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(posaljiIzabraneBrojeve))
+        navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .close, target: self, action: #selector(vratiSeNazad))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "iphone.radiowaves.left.and.right")!.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(posaljiIzabraneBrojeve))
     }
     
-    @objc func vratiSe() {
+    @objc func vratiSeNazad() {
 
         self.dismiss(animated: true)
     }
@@ -263,6 +265,7 @@ class Talon: UIViewController {
 
     }
     
+    //MARK: UI Postavke, funkcije
     
     func postaviUI() {
         postaviBrojeve()
@@ -273,10 +276,8 @@ class Talon: UIViewController {
         view.addSubview(podaciOIzabranomKolu)
         podaciOIzabranomKolu.anchor(top: brojevi.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 50)
         
-        
         view.addSubview(kvote)
         kvote.anchor(top: podaciOIzabranomKolu.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: kvoteHeight)
-        
         
         kvote.addSubview(kvoteBK)
         kvoteBK.anchor(top: kvote.topAnchor, left: view.leftAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.width/8, height: kvoteHeight/2)
@@ -444,6 +445,7 @@ class Talon: UIViewController {
 }
 
 
+//MARK: -- Ekstenzije, CollectionView
 
 
 extension Talon: UICollectionViewDataSource {

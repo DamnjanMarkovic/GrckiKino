@@ -14,23 +14,10 @@ class DodatneIgre: UIViewController {
         view.backgroundColor = .green
         title = "Igre"
         navigationController?.navigationBar.isHidden = false
-//        navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .close, target: self, action: #selector(goBack))
-//
-//        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "text.justify")!.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleMenuToggle))
+
     }
     
-//    @objc func goBack() {
-//
-//        let nextVC = NarednaKola()
-//        let navController = UINavigationController(rootViewController: nextVC)
-//        navController.modalPresentationStyle = .overFullScreen
-//        self.present(navController, animated: false)
-//        }
-//
-//    @objc func handleMenuToggle() {
-//
-//
-//    }
+
     
 
 

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class KoloCell: UICollectionViewCell {
+class KoloPoID_uCell: UICollectionViewCell {
     
     var broj: UILabel = {
         let label = UILabel(frame: .zero)

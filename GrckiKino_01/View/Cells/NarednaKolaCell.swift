@@ -16,7 +16,7 @@ class NarednaKolaCell: UITableViewCell {
     
     var terminSledecegKola = UILabel()
     var vremeDoSledecegKola = UILabel()
-    var kolo: Kolo?
+    var kolo: NarednoKolo?
     
     var preostaloVreme: Int!
     

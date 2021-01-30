@@ -86,3 +86,8 @@ extension UIView {
     }
     
 }
+
+enum LayoutConstant {
+    static let spacing: CGFloat = 3
+    static let itemHeight: CGFloat = 410.0
+}

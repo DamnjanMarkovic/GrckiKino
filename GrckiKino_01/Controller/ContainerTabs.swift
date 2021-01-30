@@ -33,9 +33,9 @@ class ContainerTabs: UITabBarController, UITabBarControllerDelegate {
     
         func configureViewControllers() {
             
-            let narednaKola = constructNavController(unselectedImage: UIImage(systemName: "text.justify")!, selectedImage: UIImage(systemName: "text.justify")!, rootViewController: NarednaKola())
+            let narednaKola = constructNavController(unselectedImage: UIImage(systemName: "text.justify")!, selectedImage: UIImage(systemName: "icloud.and.arrow.down")!, rootViewController: NarednaKola())
             
-            let kolo = constructNavController(unselectedImage: UIImage(systemName: "text.justify")!, selectedImage: UIImage(systemName: "text.justify")!, rootViewController: KoloVC())
+            let kolo = constructNavController(unselectedImage: UIImage(systemName: "text.justify")!, selectedImage: UIImage(systemName: "text.justify")!, rootViewController: KoloPoID_u())
             
             let kolaZadan = constructNavController(unselectedImage: UIImage(systemName: "person.3")!, selectedImage: UIImage(systemName: "person.3")!, rootViewController: DanIzvlacenjaVC())
             
