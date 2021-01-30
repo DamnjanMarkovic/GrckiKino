@@ -11,109 +11,147 @@ import UIKit
 
 class NarednaKolaCell: UITableViewCell {
     
-
+    private var timer: Timer?
+    private var timeCounter: Double = 0
+    
     var terminSledecegKola = UILabel()
     var vremeDoSledecegKola = UILabel()
     var kolo: Kolo?
     
-
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    var preostaloVreme: Int!
+    
+    
+    let vremeIzvlacenja: UILabel = {
+        let label = UILabel()
+        label.layer.cornerRadius = 5
+        label.numberOfLines = 0
+        label.textColor = UIColor.white
+        label.lineBreakMode = .byWordWrapping
+        label.textAlignment = .center
+        label.backgroundColor = .clear
+        label.font = Constants.fontSvuda
+        label.text = "Vreme izvlacenja"
+        label.layer.borderColor = UIColor.darkGray.cgColor
+        return label
+    }()
+    let preostaloZaUplatu: UILabel = {
+        let label = UILabel()
         
+        label.layer.cornerRadius = 5
+        label.textColor = UIColor.white
+        label.textAlignment = .center
+        label.backgroundColor = .clear
+        label.lineBreakMode = .byWordWrapping
+        label.font = Constants.fontSvuda
         
-        addSubview(terminSledecegKola)
-        addSubview(vremeDoSledecegKola)
-
-        terminSledecegKola.numberOfLines = 0
-        terminSledecegKola.font = UIFont.systemFont(ofSize: 20)
-        terminSledecegKola.adjustsFontSizeToFitWidth = true
-        
-        vremeDoSledecegKola.numberOfLines = 0
-        vremeDoSledecegKola.font = UIFont.systemFont(ofSize: 20)
-        vremeDoSledecegKola.adjustsFontSizeToFitWidth = true
-
-        postaviLabele()
-
-    }
+        label.textAlignment = .center
+        label.layer.borderColor = UIColor.darkGray.cgColor
+        label.numberOfLines = 0
+        return label
+    }()
+    let linija: UILabel = {
+        let label = UILabel()
+        label.backgroundColor = UIColor.black
+        return label
+    }()
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    private var timer: Timer?
-        private var timeCounter: Double = 0
 
-        var expiryTimeInterval: TimeInterval? {
-            didSet {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        configureContents()
+        startTimer()
+        contentView.backgroundColor = Constants.neboPlava
+        selectionStyle = UITableViewCell.SelectionStyle.none
+    }
+    
+    func configureContents() {
+        
+        vremeIzvlacenja.translatesAutoresizingMaskIntoConstraints = false
+        preostaloZaUplatu.translatesAutoresizingMaskIntoConstraints = false
+        linija.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(vremeIzvlacenja)
+        contentView.addSubview(preostaloZaUplatu)
+        contentView.addSubview(linija)
+        NSLayoutConstraint.activate([
+
+            vremeIzvlacenja.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
+            vremeIzvlacenja.widthAnchor.constraint(equalToConstant: 150),
+            vremeIzvlacenja.heightAnchor.constraint(equalToConstant: 80),
+            vremeIzvlacenja.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            
+            
+            preostaloZaUplatu.heightAnchor.constraint(equalToConstant: 80),
+            preostaloZaUplatu.leadingAnchor.constraint(equalTo: vremeIzvlacenja.trailingAnchor,
+                   constant: 10),
+            preostaloZaUplatu.trailingAnchor.constraint(equalTo:
+                   contentView.layoutMarginsGuide.trailingAnchor),
+            preostaloZaUplatu.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            
+            
+            
+            linija.heightAnchor.constraint(equalToConstant: 2),
+            linija.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor,
+                   constant: 5),
+            linija.trailingAnchor.constraint(equalTo:
+                                                contentView.layoutMarginsGuide.trailingAnchor, constant: 5),
+            linija.centerYAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
+        ])
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+
+        timer?.invalidate()
+        timer = nil
+    }
+    
+    
+    
+    private func startTimer() {
+        if let interval = expiryTimeInterval {
+
+        timeCounter = interval
+            if #available(iOS 10.0, *) {
+
+                timer = Timer.scheduledTimer(timeInterval: 1.0,
+                     target: self,
+                     selector: #selector(onComplete),
+                     userInfo: nil,
+                     repeats: true)
+            }
+        }
+    }
+
+    @objc func onComplete() {
+        guard timeCounter >= 0 else {
+            preostaloZaUplatu.text = "---"
+            timer?.invalidate()
+            timer = nil
+            return
+        }
+
+        let minutes = Int(timeCounter) / 60 % 60
+        let seconds = Int(timeCounter) % 60
+
+        preostaloZaUplatu.text = String(format:"%02i:%02i", minutes, seconds)
+
+        timeCounter -= 1
+    }
+
+
+    var expiryTimeInterval: TimeInterval? {
+    didSet {
+        if timer == nil
+            {
                 startTimer()
+                RunLoop.current.add(timer!, forMode: RunLoop.Mode.common)
             }
         }
-
-        private func startTimer() {
-            if let interval = expiryTimeInterval {
-                timeCounter = interval
-                if #available(iOS 10.0, *) {
-                    timer = Timer(timeInterval: 1.0,
-                                  repeats: true,
-                                  block: { [weak self] _ in
-                                    guard let strongSelf = self else {
-                                        return
-                                    }
-                                    strongSelf.onComplete()
-                    })
-                } else {
-                    timer = Timer(timeInterval: 1.0,
-                                  target: self,
-                                  selector: #selector(onComplete),
-                                  userInfo: nil,
-                                  repeats: true)
-                }
-            }
-        }
-
-        @objc func onComplete() {
-            guard timeCounter >= 0 else {
-                timer?.invalidate()
-                timer = nil
-                return
-            }
-            vremeDoSledecegKola.text = String(format: "%d", timeCounter)
-            timeCounter -= 1
-        }
-    
-    
-    
-    
-    func set(kolo: Kolo) {
-        
-        self.backgroundColor = UIColor.gray
-        terminSledecegKola.text = "\(TimeFunctions.vratiVremeUMinutima(timeAsTimestamp: kolo.drawTime))"
-        vremeDoSledecegKola.text = String(format: "%d", timeCounter)
-
-
-    }
-   
-    
-    
-    
-    func postaviLabele() {
-        
-        terminSledecegKola.translatesAutoresizingMaskIntoConstraints = false
-        terminSledecegKola.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-//        terminSledecegKola.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        terminSledecegKola.heightAnchor.constraint(equalToConstant: frame.height).isActive = true
-        terminSledecegKola.widthAnchor.constraint(equalToConstant: 80).isActive = true
-        
-        
-        vremeDoSledecegKola.translatesAutoresizingMaskIntoConstraints = false
-        vremeDoSledecegKola.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        vremeDoSledecegKola.heightAnchor.constraint(equalToConstant: frame.height).isActive = true
-        vremeDoSledecegKola.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12).isActive = true
-        vremeDoSledecegKola.widthAnchor.constraint(equalToConstant: 60).isActive = true
-        
     }
 
-    
 }
 
 

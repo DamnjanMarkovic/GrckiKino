@@ -19,7 +19,7 @@ class KoloHeader: UICollectionViewCell {
         let title = UILabel()
         title.textColor = .white
         title.backgroundColor = .black
-        title.font = UIFont(name: "Montserrat", size: 19)
+        title.font = Constants.fontSvuda
         title.translatesAutoresizingMaskIntoConstraints = false
         return title
     }()

@@ -8,7 +8,12 @@
 import UIKit
 
 class DanIzvlacenjaTableCell: UITableViewCell {
-
+    
+    
+    private let headerIdentifier = "DanIzvlacenjaHeader"
+    private let cellCVIdentifier = "CVDanIzvlacenjacell"
+    
+    
     var naslovKola: UILabel = {
         let label = UILabel(frame: .zero)
         label.textAlignment = .center
@@ -68,8 +73,8 @@ class DanIzvlacenjaTableCell: UITableViewCell {
     func setCollectionView() {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(DanIzvlacenjaHeader.self, forSupplementaryViewOfKind:
-                                    UICollectionView.elementKindSectionHeader, withReuseIdentifier: "DanIzvlacenjaHeader")
-        collectionView.register(DanIzvlacenjaCVCell.self, forCellWithReuseIdentifier: "CVDanIzvlacenjacell")
+                                    UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerIdentifier)
+        collectionView.register(DanIzvlacenjaCVCell.self, forCellWithReuseIdentifier: cellCVIdentifier)
         collectionView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         collectionView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         collectionView.translatesAutoresizingMaskIntoConstraints = false

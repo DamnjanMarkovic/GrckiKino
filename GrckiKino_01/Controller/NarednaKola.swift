@@ -52,7 +52,6 @@ class NarednaKola: UIViewController {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = false
         title = "naredna kola"
-        view.backgroundColor = UIColor.darkGray
         configureTableView()
         setUI()
         vratiSvakoKolo {
@@ -85,7 +84,9 @@ class NarednaKola: UIViewController {
     }
     
     func configureTableView() {
-        
+
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.separatorStyle = .none
         tableStackView.addSubview(tableView)
         tableView.rowHeight = view.frame.height / 10
         tableView.register(NarednaKolaCell.self, forCellReuseIdentifier: cellIdentifier)
@@ -94,12 +95,6 @@ class NarednaKola: UIViewController {
         tableView.dataSource = self
         tableView.set(to: tableStackView)
     }
-    
-    
-//    override func viewDidLayoutSubviews() {
-//        super.viewDidLayoutSubviews()
-//
-//    }
     
     
     func setUI() {
@@ -119,11 +114,11 @@ class NarednaKola: UIViewController {
 extension NarednaKola: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return narednaKola.count
+        return 1
 
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40
+        return 80
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -131,7 +126,6 @@ extension NarednaKola: UITableViewDelegate, UITableViewDataSource {
         let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: headerIdentifier) as! NarednaKolaHeader
         view.vremeIzvlacenja.text = "Vreme izvlacenja"
         view.preostaloZaUplatu.text = "Preostalo za uplatu"
-
         return view
     }
     
@@ -148,8 +142,15 @@ extension NarednaKola: UITableViewDelegate, UITableViewDataSource {
 
 
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! NarednaKolaCell
-        cell.expiryTimeInterval = 10
-        cell.set(kolo: narednaKola[indexPath.row])
+        
+        if (((narednaKola[indexPath.row].drawTime - (Double(TimeFunctions.vratiVremeSada())))/1000) < 300) {
+            cell.preostaloZaUplatu.textColor = .red
+        }
+        cell.vremeIzvlacenja.text = TimeFunctions.vratiVremeUMinutima(timeAsTimestamp: narednaKola[indexPath.row].drawTime)
+        
+        cell.expiryTimeInterval = ((narednaKola[indexPath.row].drawTime - (Double(TimeFunctions.vratiVremeSada())))/1000)
+        
+
         return cell
         
         
@@ -168,47 +169,6 @@ extension NarednaKola: UITableViewDelegate, UITableViewDataSource {
         navController.modalPresentationStyle = .overFullScreen
         self.present(navController, animated: false)
         
-        
-        
-//        let navController = UINavigationController(rootViewController: mainTabVC)
-//        view.addSubview(navController.view)
-//        addChild(navController)
-//        navController.didMove(toParent: self)
-        
-        
-//        let koloKliknuto = kolo[indexPath.row]
-//
-//        let mainTabVC = ContainerTabs()
-//        let navController = UINavigationController(rootViewController: mainTabVC)
-//        view.addSubview(navController.view)
-//        addChild(navController)
-//        navController.didMove(toParent: self)
-        
-        
-        
-        
-        
-        
-//        navController.modalPresentationStyle = .overFullScreen
-//        self.present(navController, animated: false)
-//        
-//        UIViewController centerController = UINavigationController(rootViewController: basicVC)
-//        view.addSubview(centerController.view)
-//        addChild(centerController)
-//        centerController.didMove(toParent: self)
-        
-
-//        let talon = Talon()
-//        talon.kolo = koloKliknuto
-//        talon.modalPresentationStyle = .overFullScreen
-        
-//        let navController = UINavigationController(rootViewController: talon)
-//        navController.modalPresentationStyle = .overFullScreen
-//        self.present(navController, animated: false)
-        
-        
-        
-//        self.present(talon, animated: false)
 
     }
     

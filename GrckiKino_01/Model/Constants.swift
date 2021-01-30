@@ -9,6 +9,8 @@ import UIKit
 
 struct Constants {
     
+    static var fontSvuda = UIFont(name: "Montserrat", size: 20)
+    static var fontKvote = UIFont.systemFont(ofSize: 14)
     
     static func randomColor() -> UIColor {
         return UIColor(red: .random(in: 0...1),
@@ -17,6 +19,12 @@ struct Constants {
                        alpha: 1)
 
     }
+    
+    
+    static var tamnoPlava = UIColor(red: (21/255.0), green: (42/255.0), blue: (175/255.0), alpha: 1.0)
+    static var neboPlava = UIColor(red: (136/255.0), green: (150/255.0), blue: (245/255.0), alpha: 1.0)
+    
+    
     
     
     static var cornerRadiusTalonCell: CGFloat = 2.0

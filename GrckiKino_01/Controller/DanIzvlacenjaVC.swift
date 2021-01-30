@@ -119,7 +119,7 @@ class DanIzvlacenjaVC: UIViewController {
     func configureTableView() {
         
         tableView.frame = CGRect(x: 0, y: 150, width: view.width, height: view.height)
-        tableView.rowHeight = 350
+        tableView.rowHeight = 400
         tableView.register(DanIzvlacenjaTableCell.self, forCellReuseIdentifier: cellIdentifier)
         tableView.delegate = self
         tableView.dataSource = self

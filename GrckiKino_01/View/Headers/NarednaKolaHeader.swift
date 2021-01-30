@@ -9,13 +9,22 @@ import UIKit
 
 class NarednaKolaHeader: UITableViewHeaderFooterView {
 
+    var containerView: UIView = {
+        let view = UIView()
+        view.clipsToBounds = true
+        return view
+    }()
+    
+    
     let vremeIzvlacenja: UILabel = {
         let label = UILabel()
         label.layer.cornerRadius = 5
         label.numberOfLines = 0
-        label.textColor = UIColor.black
+        label.textColor = UIColor.white
         label.lineBreakMode = .byWordWrapping
         label.textAlignment = .center
+        label.backgroundColor = .clear
+        label.font = Constants.fontSvuda
         label.text = "Vreme izvlacenja"
         label.layer.borderColor = UIColor.darkGray.cgColor
         return label
@@ -24,9 +33,12 @@ class NarednaKolaHeader: UITableViewHeaderFooterView {
         let label = UILabel()
         
         label.layer.cornerRadius = 5
-        label.textColor = UIColor.black
+        label.textColor = UIColor.white
+        label.textAlignment = .center
+        label.backgroundColor = .clear
         label.text =  "Preostalo za uplatu:"
         label.lineBreakMode = .byWordWrapping
+        label.font = Constants.fontSvuda
         label.textAlignment = .center
         label.layer.borderColor = UIColor.darkGray.cgColor
         label.numberOfLines = 0
@@ -37,6 +49,7 @@ class NarednaKolaHeader: UITableViewHeaderFooterView {
         override init(reuseIdentifier: String?) {
             super.init(reuseIdentifier: reuseIdentifier)
             configureContents()
+            contentView.backgroundColor = Constants.tamnoPlava
         }
     
     required init?(coder: NSCoder) {
@@ -44,44 +57,30 @@ class NarednaKolaHeader: UITableViewHeaderFooterView {
     }
     
         func configureContents() {
+            
             vremeIzvlacenja.translatesAutoresizingMaskIntoConstraints = false
             preostaloZaUplatu.translatesAutoresizingMaskIntoConstraints = false
 
             contentView.addSubview(vremeIzvlacenja)
             contentView.addSubview(preostaloZaUplatu)
-            
-            
-            
-//            vremeIzvlacenja.translatesAutoresizingMaskIntoConstraints = false
-//            vremeIzvlacenja.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-//            vremeIzvlacenja.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
-//    //        terminSledecegKola.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-//            vremeIzvlacenja.heightAnchor.constraint(equalToConstant: contentView.height).isActive = true
-//            vremeIzvlacenja.widthAnchor.constraint(equalToConstant: 80).isActive = true
-            
-//
-//            preostaloZaUplatu.translatesAutoresizingMaskIntoConstraints = false
-//            preostaloZaUplatu.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-//            preostaloZaUplatu.heightAnchor.constraint(equalToConstant: frame.height).isActive = true
-//            preostaloZaUplatu.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12).isActive = true
-//            preostaloZaUplatu.widthAnchor.constraint(equalToConstant: 60).isActive = true
-            
-            
-            
+
 
             NSLayoutConstraint.activate([
 
             vremeIzvlacenja.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
-                vremeIzvlacenja.widthAnchor.constraint(equalToConstant: 150),
-            vremeIzvlacenja.heightAnchor.constraint(equalToConstant: 50),
+            vremeIzvlacenja.widthAnchor.constraint(equalToConstant: 150),
+            vremeIzvlacenja.heightAnchor.constraint(equalToConstant: 80),
             vremeIzvlacenja.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
 
-            preostaloZaUplatu.heightAnchor.constraint(equalToConstant: 100),
+                
+                
+            preostaloZaUplatu.heightAnchor.constraint(equalToConstant: 80),
             preostaloZaUplatu.leadingAnchor.constraint(equalTo: vremeIzvlacenja.trailingAnchor,
-                   constant: 8),
+                   constant: 10),
             preostaloZaUplatu.trailingAnchor.constraint(equalTo:
                    contentView.layoutMarginsGuide.trailingAnchor),
             preostaloZaUplatu.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
             ])
         }
     }
+
