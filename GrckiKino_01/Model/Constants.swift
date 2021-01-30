@@ -14,7 +14,7 @@ struct Constants {
         return UIColor(red: .random(in: 0...1),
                        green: .random(in: 0...1),
                        blue: .random(in: 0...1),
-                       alpha: 0.2)
+                       alpha: 1)
 
     }
     
@@ -37,3 +37,9 @@ struct Constants {
     static var apiPregledNarednihKola = "https://api.opap.gr/draws/v3.0/1100/upcoming/20"
     static var apiRealizovanoKolo = "https://api.opap.gr/draws/v3.0/1100/"
 }
+
+enum LayoutConstant {
+    static let spacing: CGFloat = 3
+    static let itemHeight: CGFloat = 410.0
+}
+

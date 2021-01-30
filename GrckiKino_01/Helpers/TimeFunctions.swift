@@ -60,4 +60,28 @@ class TimeFunctions {
     
 }
 
+/*
+ let isoDate = "2021-01-02"
+ let dateFormatter = DateFormatter()
+ dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+ dateFormatter.dateFormat = "yyyy-mm-dd"
+ let date1 = dateFormatter.date(from:isoDate)!
+
+ let isoDate2 = "2021-01-12"
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+//        dateFormatter.dateFormat = "yyyy-mm-dd"
+ let date2 = dateFormatter.date(from:isoDate)!
+ let formatDate = DateFormatter()
+     formatDate.dateFormat = "yyyy-mm-dd"
+ let drawDate1 = formatDate.string(from: date1)
+ let drawDate2 = formatDate.string(from: date2)
+ 
+ 
+//        var timeOdKad = vratiDatum(timeAsString: "2021-01-11T10:44:00+0000")
+//        var timeDoKad = vratiDatum(timeAsString: "2021-04-13T10:44:00+0000")
+ let url = URL (string: "https://api.opap.gr/draws/v3.0/1100/draw-date/\(drawDate1)/\(drawDate2)/")
+//
+ */
+
 

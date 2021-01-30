@@ -16,7 +16,6 @@ struct Kolo: Decodable {
     let drawBreak: Int
     let visualDraw: Int
     let pricePoints: PricePoints
-//    let prizeCategories: [PrizeCategories]
     let wagerStatistics: WagerStatistics
 
 }
@@ -31,26 +30,6 @@ struct AddOn: Decodable {
     let amount: Double
     let gameType: String
 }
-
-struct PrizeCategories: Decodable {
-//    let id: Int
-//    let divident: Double
-//    let winners: Int
-//    let distributed: Double
-//    let jackpot: Double
-//    let fixed: Double
-//    let categoryType: Int
-    let gameType: String
-}
-
-//"id": 1,
-//"divident": 0.0,
-//"winners": 0,
-//"distributed": 0.0,
-//"jackpot": 0.0,
-//"fixed": 1.0,
-//"categoryType": 2,
-//"gameType": "KinoBonus"
 
 
 struct WagerStatistics: Decodable {

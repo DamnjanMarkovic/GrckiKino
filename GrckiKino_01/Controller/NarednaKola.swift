@@ -89,7 +89,7 @@ class NarednaKola: UIViewController {
         tableStackView.addSubview(tableView)
         tableView.rowHeight = view.frame.height / 10
         tableView.register(NarednaKolaCell.self, forCellReuseIdentifier: cellIdentifier)
-        tableView.register(KoloTableHeader.self, forHeaderFooterViewReuseIdentifier: headerIdentifier)
+        tableView.register(NarednaKolaHeader.self, forHeaderFooterViewReuseIdentifier: headerIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.set(to: tableStackView)
@@ -100,8 +100,6 @@ class NarednaKola: UIViewController {
 //        super.viewDidLayoutSubviews()
 //
 //    }
-    
-    
     
     
     func setUI() {
@@ -121,7 +119,7 @@ class NarednaKola: UIViewController {
 extension NarednaKola: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return narednaKola.count
 
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -130,7 +128,7 @@ extension NarednaKola: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 
-        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: headerIdentifier) as! KoloTableHeader
+        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: headerIdentifier) as! NarednaKolaHeader
         view.vremeIzvlacenja.text = "Vreme izvlacenja"
         view.preostaloZaUplatu.text = "Preostalo za uplatu"
 

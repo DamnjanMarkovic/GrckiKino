@@ -41,11 +41,11 @@ class KoloVC: UIViewController {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(KoloVCCell.self, forCellWithReuseIdentifier: cellKolo)
+        collectionView.register(KoloCell.self, forCellWithReuseIdentifier: cellKolo)
         collectionView.backgroundColor = UIColor.darkGray
         collectionView.dataSource = self
         collectionView.delegate = self
-        view.addSubview(collectionView ?? UICollectionView())
+        view.addSubview(collectionView)
     }
     
     @objc func vratiNekoDrugoKolo() {
@@ -107,9 +107,9 @@ class KoloVC: UIViewController {
 
 }
 
-extension KoloVC: UICollectionViewDataSource {
+extension KoloVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellKolo, for: indexPath as IndexPath) as! KoloVCCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellKolo, for: indexPath as IndexPath) as! KoloCell
         cell.setup(with: listaIzabranihBrojeva[indexPath.row])
         cell.backgroundColor = .blue
         return cell
@@ -119,18 +119,8 @@ extension KoloVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return listaIzabranihBrojeva.count
     }
-    
 
 
-
-}
-extension KoloVC: UICollectionViewDelegate {
-
-}
-
-
-extension KoloVC: UICollectionViewDelegateFlowLayout {
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let cellWidthHeight = itemWidth(for: view.frame.width, spacing: LayoutConstant.spacing)
@@ -161,10 +151,6 @@ extension KoloVC: UICollectionViewDelegateFlowLayout {
 }
 
 
-private enum LayoutConstant {
-    static let spacing: CGFloat = 3
-    static let itemHeight: CGFloat = 210.0
-}
 
 
 

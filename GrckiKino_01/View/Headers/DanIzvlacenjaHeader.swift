@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RezultatiHeader: UITableViewHeaderFooterView {
+class DanIzvlacenjaHeader: UITableViewHeaderFooterView {
 
 
     let headerLabela: UILabel = {
@@ -43,5 +43,14 @@ class RezultatiHeader: UITableViewHeaderFooterView {
             headerLabela.centerYAnchor.constraint(equalTo: contentView.layoutMarginsGuide.centerYAnchor),
 
        ])
+    }
+    
+    
+    func setHeader(koloZaIzabraniDan: ZavrsenoKolo) {
+
+        headerLabela.text = "Kolo broj: \(koloZaIzabraniDan.drawId) od \(TimeFunctions.vratiVremeUMinutima(timeAsTimestamp: koloZaIzabraniDan.drawTime))"
+
+
+
     }
 }

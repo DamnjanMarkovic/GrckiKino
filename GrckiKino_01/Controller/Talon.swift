@@ -185,7 +185,7 @@ class Talon: UIViewController {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(TalonCollectionViewCell.self, forCellWithReuseIdentifier: collectionCellIdentifier)
+        collectionView.register(TalonCell.self, forCellWithReuseIdentifier: collectionCellIdentifier)
         collectionView.backgroundColor = UIColor.darkGray
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -217,7 +217,7 @@ class Talon: UIViewController {
     @objc func izaberiIPostaviSlucajneBrojeve(_ sender: UIAlertAction) {
         for i in 0..<80 {
             let indexPath = IndexPath(row: i, section: 0)
-            let cell:TalonCollectionViewCell = collectionView.cellForItem(at: indexPath)! as! TalonCollectionViewCell
+            let cell:TalonCell = collectionView.cellForItem(at: indexPath)! as! TalonCell
             cell.broj.layer.borderColor = Constants.borderColorOriginalTalonCell
         }
         listaIzabranihBrojeva.removeAll()
@@ -236,7 +236,7 @@ class Talon: UIViewController {
         
         for item in listaSlucajnihBrojeva {
             let indexPath = IndexPath(row: item, section: 0)
-            let cell:TalonCollectionViewCell = collectionView.cellForItem(at: indexPath)! as! TalonCollectionViewCell
+            let cell:TalonCell = collectionView.cellForItem(at: indexPath)! as! TalonCell
             cell.broj.layer.borderColor = UIColor.green.cgColor
         }
     }
@@ -284,7 +284,7 @@ class Talon: UIViewController {
 
 extension Talon: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: collectionCellIdentifier, for: indexPath as IndexPath) as! TalonCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: collectionCellIdentifier, for: indexPath as IndexPath) as! TalonCell
         cell.setup(with: listaSvihBrojeva[indexPath.row])
         return cell
         
@@ -296,7 +296,7 @@ extension Talon: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let selectedCell:TalonCollectionViewCell = collectionView.cellForItem(at: indexPath)! as! TalonCollectionViewCell
+        let selectedCell:TalonCell = collectionView.cellForItem(at: indexPath)! as! TalonCell
         
         procesuirajKliknutiBroj(brojKliknut: indexPath.row+1)
         
@@ -349,7 +349,3 @@ extension Talon: UICollectionViewDelegateFlowLayout {
 }
 
 
-private enum LayoutConstant {
-    static let spacing: CGFloat = 0.5
-    static let itemHeight: CGFloat = 210.0
-}

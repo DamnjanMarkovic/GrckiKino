@@ -12,10 +12,10 @@ struct ZavrsenoKolo: Decodable {
     let gameId: Int
     let drawId: Int
     let drawTime: Double
-//    let status: String
-//    let drawBreak: Int
-//    let visualDraw: Int
-//    let pricePoints: PricePoints
+    let status: String
+    let drawBreak: Int
+    let visualDraw: Int
+    let pricePoints: PricePoints
     let winningNumbers: WinningNumbers
 
 }
@@ -23,8 +23,12 @@ struct ZavrsenoKolo: Decodable {
 struct WinningNumbers: Decodable {
     
     let list: [Int]
-    let bonus: [Int]
+
     
+}
+
+struct KolaZaIzabraniDan: Decodable {
+    let content: [ZavrsenoKolo]
 }
 
 

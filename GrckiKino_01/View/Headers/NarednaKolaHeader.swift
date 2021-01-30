@@ -7,8 +7,7 @@
 
 import UIKit
 
-class KoloTableHeader: 
-    UITableViewHeaderFooterView {
+class NarednaKolaHeader: UITableViewHeaderFooterView {
 
     let vremeIzvlacenja: UILabel = {
         let label = UILabel()

@@ -37,7 +37,7 @@ class ContainerTabs: UITabBarController, UITabBarControllerDelegate {
             
             let kolo = constructNavController(unselectedImage: UIImage(systemName: "text.justify")!, selectedImage: UIImage(systemName: "text.justify")!, rootViewController: KoloVC())
             
-            let kolaZadan = constructNavController(unselectedImage: UIImage(systemName: "person.3")!, selectedImage: UIImage(systemName: "person.3")!, rootViewController: RezultatiIzvlacenjaZaDan())
+            let kolaZadan = constructNavController(unselectedImage: UIImage(systemName: "person.3")!, selectedImage: UIImage(systemName: "person.3")!, rootViewController: DanIzvlacenjaVC())
             
             
             let uzivo = constructNavController(unselectedImage: UIImage(systemName: "person.badge.plus")!, selectedImage: UIImage(systemName: "person.badge.plus")!, rootViewController: IzvlacenjeUzivo())

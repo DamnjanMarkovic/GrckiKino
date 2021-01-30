@@ -27,14 +27,15 @@
 		6625E8F625C22EB100708D68 /* IzvlacenjeUzivo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6625E8F525C22EB100708D68 /* IzvlacenjeUzivo.swift */; };
 		6625E8FB25C22ED200708D68 /* KoloVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6625E8FA25C22ED200708D68 /* KoloVC.swift */; };
 		662C0E0B25C3CC48005D4726 /* RezultatiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662C0E0A25C3CC48005D4726 /* RezultatiCell.swift */; };
-		662C0E1325C3CC69005D4726 /* RezultatiHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662C0E1225C3CC69005D4726 /* RezultatiHeader.swift */; };
+		662C0E1325C3CC69005D4726 /* DanIzvlacenjaHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662C0E1225C3CC69005D4726 /* DanIzvlacenjaHeader.swift */; };
 		662C0E1B25C3CEF7005D4726 /* ZavrsenoKolo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662C0E1A25C3CEF7005D4726 /* ZavrsenoKolo.swift */; };
-		662C0E2325C3EA75005D4726 /* ErrorDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662C0E2225C3EA75005D4726 /* ErrorDate.swift */; };
-		6630978825C29097006C78B8 /* KoloTableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6630978725C29097006C78B8 /* KoloTableHeader.swift */; };
-		6635499425C2BC4000CCD205 /* TalonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6635499325C2BC4000CCD205 /* TalonCollectionViewCell.swift */; };
+		6630978825C29097006C78B8 /* NarednaKolaHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6630978725C29097006C78B8 /* NarednaKolaHeader.swift */; };
+		6635499425C2BC4000CCD205 /* TalonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6635499325C2BC4000CCD205 /* TalonCell.swift */; };
 		66E6D34F25C48CDB004FD2C4 /* OpeningVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E6D34E25C48CDB004FD2C4 /* OpeningVC.swift */; };
-		66E6D36125C49B42004FD2C4 /* RezultatiIzvlacenjaZaDan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E6D36025C49B42004FD2C4 /* RezultatiIzvlacenjaZaDan.swift */; };
-		66E6D36F25C4ACA9004FD2C4 /* KoloVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E6D36E25C4ACA9004FD2C4 /* KoloVCCell.swift */; };
+		66E6D36125C49B42004FD2C4 /* DanIzvlacenjaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E6D36025C49B42004FD2C4 /* DanIzvlacenjaVC.swift */; };
+		66E6D36F25C4ACA9004FD2C4 /* KoloCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E6D36E25C4ACA9004FD2C4 /* KoloCell.swift */; };
+		66E6D38925C4B498004FD2C4 /* DanIzvlacenjaTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E6D38825C4B498004FD2C4 /* DanIzvlacenjaTableCell.swift */; };
+		66E6D39C25C4CD72004FD2C4 /* DanIzvlacenjaCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E6D39B25C4CD72004FD2C4 /* DanIzvlacenjaCVCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,14 +82,15 @@
 		6625E8F525C22EB100708D68 /* IzvlacenjeUzivo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IzvlacenjeUzivo.swift; sourceTree = "<group>"; };
 		6625E8FA25C22ED200708D68 /* KoloVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoloVC.swift; sourceTree = "<group>"; };
 		662C0E0A25C3CC48005D4726 /* RezultatiCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RezultatiCell.swift; sourceTree = "<group>"; };
-		662C0E1225C3CC69005D4726 /* RezultatiHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RezultatiHeader.swift; sourceTree = "<group>"; };
+		662C0E1225C3CC69005D4726 /* DanIzvlacenjaHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DanIzvlacenjaHeader.swift; sourceTree = "<group>"; };
 		662C0E1A25C3CEF7005D4726 /* ZavrsenoKolo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZavrsenoKolo.swift; sourceTree = "<group>"; };
-		662C0E2225C3EA75005D4726 /* ErrorDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDate.swift; sourceTree = "<group>"; };
-		6630978725C29097006C78B8 /* KoloTableHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoloTableHeader.swift; sourceTree = "<group>"; };
-		6635499325C2BC4000CCD205 /* TalonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalonCollectionViewCell.swift; sourceTree = "<group>"; };
+		6630978725C29097006C78B8 /* NarednaKolaHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NarednaKolaHeader.swift; sourceTree = "<group>"; };
+		6635499325C2BC4000CCD205 /* TalonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalonCell.swift; sourceTree = "<group>"; };
 		66E6D34E25C48CDB004FD2C4 /* OpeningVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpeningVC.swift; sourceTree = "<group>"; };
-		66E6D36025C49B42004FD2C4 /* RezultatiIzvlacenjaZaDan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RezultatiIzvlacenjaZaDan.swift; sourceTree = "<group>"; };
-		66E6D36E25C4ACA9004FD2C4 /* KoloVCCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoloVCCell.swift; sourceTree = "<group>"; };
+		66E6D36025C49B42004FD2C4 /* DanIzvlacenjaVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DanIzvlacenjaVC.swift; sourceTree = "<group>"; };
+		66E6D36E25C4ACA9004FD2C4 /* KoloCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoloCell.swift; sourceTree = "<group>"; };
+		66E6D38825C4B498004FD2C4 /* DanIzvlacenjaTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DanIzvlacenjaTableCell.swift; sourceTree = "<group>"; };
+		66E6D39B25C4CD72004FD2C4 /* DanIzvlacenjaCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DanIzvlacenjaCVCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,7 +179,6 @@
 				6625E8BC25C1EB2C00708D68 /* Constants.swift */,
 				6625E8CA25C1ED2300708D68 /* Kolo.swift */,
 				662C0E1A25C3CEF7005D4726 /* ZavrsenoKolo.swift */,
-				662C0E2225C3EA75005D4726 /* ErrorDate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -198,8 +199,8 @@
 				6625E8EB25C22E1200708D68 /* ContainerTabs.swift */,
 				6625E8A625C1E68000708D68 /* NarednaKola.swift */,
 				6625E8E625C22BEA00708D68 /* Talon.swift */,
-				66E6D36025C49B42004FD2C4 /* RezultatiIzvlacenjaZaDan.swift */,
 				6625E8FA25C22ED200708D68 /* KoloVC.swift */,
+				66E6D36025C49B42004FD2C4 /* DanIzvlacenjaVC.swift */,
 				6625E8F525C22EB100708D68 /* IzvlacenjeUzivo.swift */,
 				6625E8F025C22E9100708D68 /* DodatneIgre.swift */,
 			);
@@ -227,8 +228,8 @@
 		662C0E0925C3CBD9005D4726 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				6630978725C29097006C78B8 /* KoloTableHeader.swift */,
-				662C0E1225C3CC69005D4726 /* RezultatiHeader.swift */,
+				6630978725C29097006C78B8 /* NarednaKolaHeader.swift */,
+				662C0E1225C3CC69005D4726 /* DanIzvlacenjaHeader.swift */,
 			);
 			path = Headers;
 			sourceTree = "<group>";
@@ -237,9 +238,11 @@
 			isa = PBXGroup;
 			children = (
 				6625E8DB25C2140900708D68 /* NarednaKolaCell.swift */,
-				6635499325C2BC4000CCD205 /* TalonCollectionViewCell.swift */,
+				6635499325C2BC4000CCD205 /* TalonCell.swift */,
+				66E6D36E25C4ACA9004FD2C4 /* KoloCell.swift */,
+				66E6D38825C4B498004FD2C4 /* DanIzvlacenjaTableCell.swift */,
 				662C0E0A25C3CC48005D4726 /* RezultatiCell.swift */,
-				66E6D36E25C4ACA9004FD2C4 /* KoloVCCell.swift */,
+				66E6D39B25C4CD72004FD2C4 /* DanIzvlacenjaCVCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -373,7 +376,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6630978825C29097006C78B8 /* KoloTableHeader.swift in Sources */,
+				6630978825C29097006C78B8 /* NarednaKolaHeader.swift in Sources */,
+				66E6D38925C4B498004FD2C4 /* DanIzvlacenjaTableCell.swift in Sources */,
+				66E6D39C25C4CD72004FD2C4 /* DanIzvlacenjaCVCell.swift in Sources */,
 				6625E8F125C22E9100708D68 /* DodatneIgre.swift in Sources */,
 				6625E8A725C1E68000708D68 /* NarednaKola.swift in Sources */,
 				6625E8B825C1EAD100708D68 /* AlertInfo.swift in Sources */,
@@ -381,18 +386,17 @@
 				6625E8CB25C1ED2300708D68 /* Kolo.swift in Sources */,
 				6625E83E25C1DE6A00708D68 /* AppDelegate.swift in Sources */,
 				662C0E1B25C3CEF7005D4726 /* ZavrsenoKolo.swift in Sources */,
-				66E6D36125C49B42004FD2C4 /* RezultatiIzvlacenjaZaDan.swift in Sources */,
-				66E6D36F25C4ACA9004FD2C4 /* KoloVCCell.swift in Sources */,
+				66E6D36125C49B42004FD2C4 /* DanIzvlacenjaVC.swift in Sources */,
+				66E6D36F25C4ACA9004FD2C4 /* KoloCell.swift in Sources */,
 				6625E84025C1DE6A00708D68 /* SceneDelegate.swift in Sources */,
-				662C0E1325C3CC69005D4726 /* RezultatiHeader.swift in Sources */,
-				6635499425C2BC4000CCD205 /* TalonCollectionViewCell.swift in Sources */,
+				662C0E1325C3CC69005D4726 /* DanIzvlacenjaHeader.swift in Sources */,
+				6635499425C2BC4000CCD205 /* TalonCell.swift in Sources */,
 				6625E8EC25C22E1200708D68 /* ContainerTabs.swift in Sources */,
 				662C0E0B25C3CC48005D4726 /* RezultatiCell.swift in Sources */,
 				66E6D34F25C48CDB004FD2C4 /* OpeningVC.swift in Sources */,
 				6625E8DC25C2140900708D68 /* NarednaKolaCell.swift in Sources */,
 				6625E8E725C22BEA00708D68 /* Talon.swift in Sources */,
 				6625E8F625C22EB100708D68 /* IzvlacenjeUzivo.swift in Sources */,
-				662C0E2325C3EA75005D4726 /* ErrorDate.swift in Sources */,
 				6625E8B025C1EA9D00708D68 /* Extensions.swift in Sources */,
 				6625E8BD25C1EB2C00708D68 /* Constants.swift in Sources */,
 				6625E8C325C1EBA000708D68 /* DatabaseManager.swift in Sources */,

@@ -1,16 +1,14 @@
 //
-//  TalonCollectionViewCell.swift
+//  KoloVCCell.swift
 //  GrckiKino_01
 //
-//  Created by Damnjan Markovic on 28.1.21..
+//  Created by Damnjan Markovic on 29.1.21..
 //
 
 import UIKit
 
-class TalonCollectionViewCell: UICollectionViewCell {
+class KoloCell: UICollectionViewCell {
     
-
-
     var broj: UILabel = {
         let label = UILabel(frame: .zero)
         label.textAlignment = .center
@@ -66,4 +64,5 @@ class TalonCollectionViewCell: UICollectionViewCell {
         
     }
 }
+
 
