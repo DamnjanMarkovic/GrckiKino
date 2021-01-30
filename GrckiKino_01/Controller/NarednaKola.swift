@@ -10,7 +10,7 @@ import UIKit
 
 
 extension NarednaKola: NarednaKolaDownloadingDelegate {
-    func vratiNarednaKolaPrekoProtokola(_ koloDownloading: NarednaKolaDownloading, narednaKola: [NarednoKolo]) {        
+    func vratiNarednaKolaPrekoProtokola(_ koloDownloading: NarednaKolaDownload, narednaKola: [NarednoKolo]) {        
         DispatchQueue.main.async {
             self.narednaKola = narednaKola
         }
@@ -30,7 +30,7 @@ class NarednaKola: UIViewController {
     var narednaKola = [NarednoKolo]()
     var tableView = UITableView()
     
-    var delegat = NarednaKolaDownloading()
+    var delegat = NarednaKolaDownload()
     
     
     private let tableStackView: UIStackView = {

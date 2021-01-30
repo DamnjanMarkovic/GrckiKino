@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6614154425C5E5A300F60413 /* NarednaKolaDownloading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6614154325C5E5A300F60413 /* NarednaKolaDownloading.swift */; };
+		6614154425C5E5A300F60413 /* NarednaKolaDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6614154325C5E5A300F60413 /* NarednaKolaDownload.swift */; };
 		6614155525C5F70E00F60413 /* KoloPoID_uDownloading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6614155425C5F70E00F60413 /* KoloPoID_uDownloading.swift */; };
 		6614156325C5FDC600F60413 /* KoloPoDatumuDownloading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6614156225C5FDC600F60413 /* KoloPoDatumuDownloading.swift */; };
 		6614156B25C6078D00F60413 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6614156A25C6078D00F60413 /* Error.swift */; };
@@ -61,7 +61,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6614154325C5E5A300F60413 /* NarednaKolaDownloading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NarednaKolaDownloading.swift; sourceTree = "<group>"; };
+		6614154325C5E5A300F60413 /* NarednaKolaDownload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NarednaKolaDownload.swift; sourceTree = "<group>"; };
 		6614155425C5F70E00F60413 /* KoloPoID_uDownloading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoloPoID_uDownloading.swift; sourceTree = "<group>"; };
 		6614156225C5FDC600F60413 /* KoloPoDatumuDownloading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoloPoDatumuDownloading.swift; sourceTree = "<group>"; };
 		6614156A25C6078D00F60413 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
@@ -232,7 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				6625E8C225C1EBA000708D68 /* Singletone.swift */,
-				6614154325C5E5A300F60413 /* NarednaKolaDownloading.swift */,
+				6614154325C5E5A300F60413 /* NarednaKolaDownload.swift */,
 				6614155425C5F70E00F60413 /* KoloPoID_uDownloading.swift */,
 				6614156225C5FDC600F60413 /* KoloPoDatumuDownloading.swift */,
 				6614156F25C608FC00F60413 /* JSONParser.swift */,
@@ -392,7 +392,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6630978825C29097006C78B8 /* NarednaKolaHeader.swift in Sources */,
-				6614154425C5E5A300F60413 /* NarednaKolaDownloading.swift in Sources */,
+				6614154425C5E5A300F60413 /* NarednaKolaDownload.swift in Sources */,
 				66E6D38925C4B498004FD2C4 /* DanIzvlacenjaTableCell.swift in Sources */,
 				66E6D39C25C4CD72004FD2C4 /* DanIzvlacenjaCVCell.swift in Sources */,
 				6625E8F125C22E9100708D68 /* DodatneIgre.swift in Sources */,
