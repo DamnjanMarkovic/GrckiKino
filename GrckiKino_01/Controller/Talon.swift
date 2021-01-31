@@ -297,6 +297,7 @@ class Talon: UIViewController {
         let ac = UIAlertController(title: "Salju se brojevi: \n\(listaIzabranihBrojevaZaSlanje)", message: nil, preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "Salji!", style: .default, handler: nil))
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        listaIzabranihBrojevaZaSlanje = ""
         self.present(ac, animated: true)
 
     }
