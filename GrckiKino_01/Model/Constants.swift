@@ -9,8 +9,11 @@ import UIKit
 
 struct Constants {
     
-    static var fontSvuda = UIFont(name: "Montserrat", size: 20)
+
+    static var fontSvuda = UIFont.systemFont(ofSize: 20)
     static var fontKvote = UIFont.systemFont(ofSize: 14)
+    static var fontBrojevi = UIFont.systemFont(ofSize: 30)
+    
     
     static func randomColor() -> UIColor {
         return UIColor(red: .random(in: 0...1),
@@ -32,18 +35,10 @@ struct Constants {
     static var borderColorOriginalTalonCell = UIColor.black.cgColor
     
     
-    
-    static var colorChanging = true
-    static let taskLifeExpectancyInDays = 30.0
-    static let dayInMiliseconds = 86_400_000.00
-    static let timeNowInMS = NSDate().timeIntervalSince1970
-
-
-    
-    static var apiposlednjeKolo = "https://api.opap.gr/draws/v3.0/1110/last-result-and-active?includeAnimation=true&status=results&status=pendingResults"
-    
     static var apiPregledNarednihKola = "https://api.opap.gr/draws/v3.0/1100/upcoming/20"
     static var apiRealizovanoKolo = "https://api.opap.gr/draws/v3.0/1100/"
+    
+    static var apiUzivoIzvlacenje = "https://ds.opap.gr/web_kino/kinoIframe.html?link=https://ds.opap.gr/web_kino/kino/html/Internet_PRODUCTION/KinoDraw_201910.html&resolution=847x500"
 }
 
 

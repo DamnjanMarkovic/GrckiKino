@@ -5,6 +5,9 @@
 //  Created by Damnjan Markovic on 28.1.21..
 //
 
+
+///ekstenzija koja obezbedjuje vracanje podataka sa interneta
+
 extension KoloPoID_u: KoloPoID_uDownloadingingDelegate {
     
     func vratikoloPoID_uPrekoProtokola(_ koloDownloading: KoloPoID_uDownloading, koloPoIDju: ZavrsenoKolo, listaIzabranihBrojeva: [Int]) {
@@ -44,7 +47,8 @@ class KoloPoID_u: UIViewController {
         view.backgroundColor = .black
         title = "Kolo"
         navigationController?.navigationBar.isHidden = false
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus.message")!.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(vratiNekoDrugoKolo))
+        guard let slikaBarButton = UIImage(systemName: "plus.message") else { return }
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: slikaBarButton.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(vratiNekoDrugoKolo))
         delegat.delegate = self
         unosBrojaKola()
 
@@ -66,6 +70,8 @@ class KoloPoID_u: UIViewController {
             unosBrojaKola()
 
     }
+    
+    ///funkcija koja regulise dalje radnje nakon unosa ID-ja trazenog kola. Vrsi se i provera da li je unet pozitivan ceo broj
     
     func unosBrojaKola() {
         showInputDialog(title: "Unesite broj kola",
@@ -89,6 +95,7 @@ class KoloPoID_u: UIViewController {
                             })
     }
     
+    ///funkcija koja preko delegata i protokola vraca podatke sa interneta
     
     func vratiKoloPoID_u() {
         delegat.vratiKoloPoID_u(brojKola: brojKola) { success in
@@ -163,6 +170,7 @@ extension KoloPoID_u: UICollectionViewDataSource, UICollectionViewDelegate, UICo
     }
 }
 
+///ekstezija za alert koji ima i tekst field
 
 extension UIViewController {
     func showInputDialog(title:String? = nil,

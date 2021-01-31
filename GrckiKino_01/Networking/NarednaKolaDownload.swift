@@ -23,7 +23,10 @@ struct NarednaKolaDownload {
         
         let url = URL (string: Constants.apiPregledNarednihKola)
         let jsonParser = JSONParser()
-        jsonParser.downloadList(of: NarednoKolo.self, from: url!) { (result) in
+        
+        guard let unwrappedUrl = url else { return }
+        
+        jsonParser.downloadList(of: NarednoKolo.self, from: unwrappedUrl) { (result) in
             switch result {
                 
             case .failure(let error):

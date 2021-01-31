@@ -147,7 +147,8 @@ class NarednaKolaCell: UITableViewCell {
         if timer == nil
             {
                 startTimer()
-                RunLoop.current.add(timer!, forMode: RunLoop.Mode.common)
+                guard let timerChecked = timer else { return }            
+                RunLoop.current.add(timerChecked, forMode: RunLoop.Mode.common)
             }
         }
     }

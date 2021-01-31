@@ -7,6 +7,9 @@
 
 import UIKit
 
+
+///ekstenzija koja obezbedjuje vracanje podataka sa interneta
+
 extension DanIzvlacenjaVC: KolaPoDatumuDownloadingingDelegate {
     func vratikolaPoDatumuPrekoProtokola(_ koloPoDatumuDownloading: KoloPoDatumuDownloading, kolaZaIzabraniDan: KolaZaIzabraniDan, kolaUDanu: [ZavrsenoKolo]) {
         DispatchQueue.main.async {
@@ -71,18 +74,21 @@ class DanIzvlacenjaVC: UIViewController {
         
     }
 
+    ///funkcija reaguje na izbor datuma - kreira string u skladu sa dokumentacijom i trazi podatke po navedenom datumu.
+    ///Nije moguce dobiti informacije za vise od jednog dana, tako da je potreban izbor samo jednog datuma
     
     @objc func timeChanged(sender: UIDatePicker) {
         self.dismiss(animated: true, completion: nil)
         self.scheduledTime = sender.date
-        let scheduledTimeForNotification = Calendar.current.date(byAdding: .hour, value: 1, to: scheduledTime)!
-
+        guard let scheduledTimeForNotification = Calendar.current.date(byAdding: .hour, value: 1, to: scheduledTime) else { return }
         let formatter = DateFormatter()
         formatter.dateFormat = "y-MM-dd"
         izabraniDan = formatter.string(from: scheduledTimeForNotification)
         vratiKola()
 
     }
+    
+    ///funkcija koja preko delegata i protokola vraca podatke sa interneta
     
     func vratiKola() {
         delegat.vratiKolaPoDatumu(datum: izabraniDan) { success in
@@ -101,15 +107,12 @@ class DanIzvlacenjaVC: UIViewController {
     func configureDateView() {
         
         dateView.frame = CGRect(x: view.width/3, y: 80, width: view.width/3, height: 60)
- 
         view.addSubview(dateView)
         dateView.addSubview(datePickerer)
         datePickerer.datePickerMode = UIDatePicker.Mode.date
         datePickerer.tintColor = .white
         datePickerer.anchor(top: dateView.topAnchor, left: dateView.leftAnchor, bottom: nil, right: dateView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 60)
-        
-
-        
+ 
     }
     
     
@@ -127,6 +130,8 @@ class DanIzvlacenjaVC: UIViewController {
 
 }
 
+
+///ekstenzija za TableView; TableViewCell ce u sebi imati sadzaj CollectionView-a
 
 extension DanIzvlacenjaVC: UITableViewDelegate, UITableViewDataSource  {
     
@@ -157,6 +162,8 @@ extension DanIzvlacenjaVC: UITableViewDelegate, UITableViewDataSource  {
 }
 
 
+///ekstenzija za CollectionView koji se smesta u cell TableView-a
+
 extension DanIzvlacenjaVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
@@ -183,10 +190,11 @@ extension DanIzvlacenjaVC: UICollectionViewDataSource, UICollectionViewDelegate,
             return header
     }
     
+    ///podesavanje UI-a CollectionView-a
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: view.width, height: 50)
     }
-
 
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

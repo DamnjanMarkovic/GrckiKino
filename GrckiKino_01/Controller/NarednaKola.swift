@@ -7,7 +7,7 @@
 
 import UIKit
 
-
+///ekstenzija koja obezbedjuje vracanje podataka sa interneta
 
 extension NarednaKola: NarednaKolaDownloadingDelegate {
     func vratiNarednaKolaPrekoProtokola(_ koloDownloading: NarednaKolaDownload, narednaKola: [NarednoKolo]) {        
@@ -54,6 +54,8 @@ class NarednaKola: UIViewController {
         setUI()
 
     }
+    
+    ///funkcija koja preko delegata i protokola vraca podatke sa interneta
     
     func vratiKola() {
         delegat.vratiNarednaKola() { success in
@@ -135,12 +137,24 @@ extension NarednaKola: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let koloKliknuto = narednaKola[indexPath.row]
-        Singletone.Instanca.koloKliknuto = koloKliknuto
         
-        let talonVC = Talon()
-        let navController = UINavigationController(rootViewController: talonVC)
-        navController.modalPresentationStyle = .overFullScreen
-        self.present(navController, animated: false)
+        ///provera  da li je vreme za uplatu isteklo, ona ce omoguciti izbor polja. Ako je vreme isteklo, ne moze se ici na biranje
+        
+        if koloKliknuto.drawTime > Double(TimeFunctions.vratiVremeSada()) {
+            Singletone.Instanca.koloKliknuto = koloKliknuto
+            
+            let talonVC = Talon()
+            let navController = UINavigationController(rootViewController: talonVC)
+            navController.modalPresentationStyle = .overFullScreen
+            self.present(navController, animated: false)
+        }
+        else {
+            let ac = UIAlertController(title: "Jbg, vreme je isteklo.", message: nil, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK, sta da se radi", style: .default, handler: nil))
+            self.present(ac, animated: true)
+        }
+        
+
         
     }
     

@@ -22,7 +22,10 @@ struct KoloPoID_uDownloading {
         
         let jsonParser = JSONParser()
         let url = URL (string: "\(Constants.apiRealizovanoKolo)/\(brojKola)/")
-        jsonParser.downloadSingle(of: ZavrsenoKolo.self, from: url!) { (result) in
+        
+        guard let unwrappedUrl = url else { return }
+        
+        jsonParser.downloadSingle(of: ZavrsenoKolo.self, from: unwrappedUrl) { (result) in
             switch result {
                 
             case .failure(let error):

@@ -249,14 +249,20 @@ class Talon: UIViewController {
         postaviInformacije()
 
         navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .close, target: self, action: #selector(vratiSeNazad))
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "iphone.radiowaves.left.and.right")!.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(posaljiIzabraneBrojeve))
+        guard let slikaBarButton =  UIImage(systemName: "iphone.radiowaves.left.and.right") else { return }
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: slikaBarButton.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(posaljiIzabraneBrojeve))
     }
+    
+    ///funkcija koja vraca na prethodni, glavni meni
     
     @objc func vratiSeNazad() {
 
         self.dismiss(animated: true)
     }
 
+    ///funkcija koja vrsi pripremu za slanje brojeva :)
+    
+    
     @objc func posaljiIzabraneBrojeve() {
         let ac = UIAlertController(title: "Idemo na slanje brojeva.", message: nil, preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "DA!", style: .default, handler: nil))
@@ -265,7 +271,7 @@ class Talon: UIViewController {
 
     }
     
-    //MARK: UI Postavke, funkcije
+    //MARK: UI-Postavke, funkcije
     
     func postaviUI() {
         postaviBrojeve()
@@ -343,14 +349,17 @@ class Talon: UIViewController {
 
     }
     
+    ///funkcija koja obezbedjuje postavljanje informacija, koriscenjem property-observera
     
     func postaviInformacije() {
-        
 
         podaciOIzabranomKolu.text = "Vreme izvlacenja: \(TimeFunctions.vratiVremeUMinutima(timeAsTimestamp: koloKliknuto.drawTime)) | Kolo: \(koloKliknuto.drawId)"
 
         ukupnoIzabranoBrojevaLabela.text = "Izabrano brojeva: \n\(ukupnoIzabranoBrojeva)"
     }
+    
+    
+    ///funkcija koja obezbedjuje unos brojeva u listu, a nakon toga kreiranje Collection-view-a koji ce biti "napunjen" brojevima iz liste
     
     func postaviBrojeve() {
         ubaciBrojeveUListu()
@@ -379,8 +388,11 @@ class Talon: UIViewController {
         self.present(ac, animated: true)
     }
     
+    ///Izbor slucajnih brojeva, imajuci u vidu da, ako se ponovo pokrene akcija, prethodni brojevi se izbrisu
+    
     @objc func izaberiIPostaviSlucajneBrojeve(_ sender: UIAlertAction) {
         for i in 0..<80 {
+            
             let indexPath = IndexPath(row: i, section: 0)
             let cell:TalonCell = collectionView.cellForItem(at: indexPath)! as! TalonCell
             cell.broj.layer.borderColor = Constants.borderColorOriginalTalonCell
@@ -407,13 +419,15 @@ class Talon: UIViewController {
     }
     
     
-    
+    ///Ubacivanje brojeva u listu
     
     func ubaciBrojeveUListu() {
         for i in 1..<81 {
             listaSvihBrojeva.append(i)
         }
     }
+    
+    ///Provera da li je broj vec kliknut
     
     func brojJeVecKliknut(brojKliknut: Int) -> Bool {
         if listaIzabranihBrojeva.contains(brojKliknut) {
@@ -422,6 +436,8 @@ class Talon: UIViewController {
         return false
     }
     
+    
+    ///po izboru broja, vrsi se provera da li je taj broj vec u listi i dodaje se, ako nije, a sklanja, ako jeste. to vodi i ka zaokruzivanju i otkruzivanju broja (mislim da sam izmislio novu rec)
     
     func procesuirajKliknutiBroj(brojKliknut: Int) {
         

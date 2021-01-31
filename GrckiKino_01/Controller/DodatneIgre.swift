@@ -11,7 +11,7 @@ class DodatneIgre: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .green
+        view.backgroundColor = .blue
         title = "Igre"
         navigationController?.navigationBar.isHidden = false
 

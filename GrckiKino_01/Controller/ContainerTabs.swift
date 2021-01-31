@@ -33,17 +33,25 @@ class ContainerTabs: UITabBarController, UITabBarControllerDelegate {
     
         func configureViewControllers() {
             
-            let narednaKola = constructNavController(unselectedImage: UIImage(systemName: "text.justify")!, selectedImage: UIImage(systemName: "icloud.and.arrow.down")!, rootViewController: NarednaKola())
             
-            let kolo = constructNavController(unselectedImage: UIImage(systemName: "text.justify")!, selectedImage: UIImage(systemName: "text.justify")!, rootViewController: KoloPoID_u())
+            guard let slikaNarednaKola =  UIImage(systemName: "icloud.and.arrow.down"),
+                  let slikaKolo = UIImage(systemName: "text.justify"),
+                  let slikakolaZadan = UIImage(systemName: "person.3"),
+                  let slikaUzivo = UIImage(systemName: "person.badge.plus"),
+                  let slikaIgre = UIImage(systemName: "square.and.pencil")
+            else { return }
             
-            let kolaZadan = constructNavController(unselectedImage: UIImage(systemName: "person.3")!, selectedImage: UIImage(systemName: "person.3")!, rootViewController: DanIzvlacenjaVC())
+            let narednaKola = constructNavController(unselectedImage: slikaNarednaKola, selectedImage: slikaNarednaKola, rootViewController: NarednaKola())
+            
+            let kolo = constructNavController(unselectedImage: slikaKolo, selectedImage: slikaKolo, rootViewController: KoloPoID_u())
+            
+            let kolaZadan = constructNavController(unselectedImage: slikakolaZadan, selectedImage: slikakolaZadan, rootViewController: DanIzvlacenjaVC())
             
             
-            let uzivo = constructNavController(unselectedImage: UIImage(systemName: "person.badge.plus")!, selectedImage: UIImage(systemName: "person.badge.plus")!, rootViewController: IzvlacenjeUzivo())
+            let uzivo = constructNavController(unselectedImage: slikaUzivo, selectedImage: slikaUzivo, rootViewController: IzvlacenjeUzivo())
             
             
-            let igre = constructNavController(unselectedImage: UIImage(systemName: "square.and.pencil")!, selectedImage: UIImage(systemName: "square.and.pencil")!, rootViewController: DodatneIgre())
+            let igre = constructNavController(unselectedImage: slikaIgre, selectedImage: slikaIgre, rootViewController: DodatneIgre())
 
             
             narednaKola.title = "naredna kola"

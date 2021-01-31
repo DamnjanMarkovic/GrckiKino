@@ -21,10 +21,11 @@ struct KoloPoDatumuDownloading {
     func vratiKolaPoDatumu(datum: String, completition: @escaping ((_ success: Bool) -> ())) {
         
         let url = URL (string: "\(Constants.apiRealizovanoKolo)draw-date/\(datum)/\(datum)")
+        guard let unwrappedUrl = url else { return }
         
         let jsonParser = JSONParser()
 
-        jsonParser.downloadSingle(of: KolaZaIzabraniDan.self, from: url!) { (result) in
+        jsonParser.downloadSingle(of: KolaZaIzabraniDan.self, from: unwrappedUrl) { (result) in
             switch result {
                 
             case .failure(let error):
