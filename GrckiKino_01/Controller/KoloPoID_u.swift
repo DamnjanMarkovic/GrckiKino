@@ -128,7 +128,7 @@ extension KoloPoID_u: UICollectionViewDataSource, UICollectionViewDelegate, UICo
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier:
                                                                         headerKolo, for: indexPath) as! KoloPoID_uHeader
         
-        header.headerLabela.text = "Kolo broj: \(koloPoIDju.drawId) od \(TimeFunctions.vratiVremeUMinutima(timeAsTimestamp: koloPoIDju.drawTime)) dana \(TimeFunctions.vratiDan(timeAsTimestamp: koloPoIDju.drawTime)). "
+        header.headerLabela.text = "Kolo broj: \(koloPoIDju.drawId) od \(TimeFunctions.vratiVremeUMinutima(timeAsTimestamp: koloPoIDju.drawTime)) \(TimeFunctions.vratiDan(timeAsTimestamp: koloPoIDju.drawTime)). "
 
             return header
     }

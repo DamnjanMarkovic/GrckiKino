@@ -27,6 +27,7 @@ class NarednaKolaCell: UITableViewCell {
         label.numberOfLines = 0
         label.textColor = UIColor.white
         label.lineBreakMode = .byWordWrapping
+        label.adjustsFontSizeToFitWidth = true
         label.textAlignment = .center
         label.backgroundColor = .clear
         label.font = Constants.fontSvuda
@@ -41,6 +42,7 @@ class NarednaKolaCell: UITableViewCell {
         label.textColor = UIColor.white
         label.textAlignment = .center
         label.backgroundColor = .clear
+        label.adjustsFontSizeToFitWidth = true
         label.lineBreakMode = .byWordWrapping
         label.font = Constants.fontSvuda
         

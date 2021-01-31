@@ -28,6 +28,7 @@ class Talon: UIViewController {
         let label = UILabel(frame: .zero)
         label.textAlignment = .center
         label.textColor = .white
+        label.adjustsFontSizeToFitWidth = true
         label.backgroundColor = .darkGray
         label.numberOfLines = 0
         label.layer.backgroundColor = UIColor.clear.cgColor
@@ -40,6 +41,7 @@ class Talon: UIViewController {
         label.textColor = .white
         label.backgroundColor = .darkGray
         label.numberOfLines = 0
+        label.adjustsFontSizeToFitWidth = true
         label.layer.borderWidth = 2
         label.layer.borderColor = UIColor.black.cgColor
         label.layer.cornerRadius = 14
@@ -71,6 +73,7 @@ class Talon: UIViewController {
         let label = UILabel(frame: .zero)
         label.textAlignment = .center
         label.textColor = .white
+        label.adjustsFontSizeToFitWidth = true
         label.font = Constants.fontKvote
         label.text = "B.K"
         label.numberOfLines = 0
@@ -78,6 +81,7 @@ class Talon: UIViewController {
     }()
     var kvoteKvota: UILabel = {
         let label = UILabel(frame: .zero)
+        label.adjustsFontSizeToFitWidth = true
         label.textAlignment = .center
         label.text = "Kvota"
         label.font = Constants.fontKvote
@@ -88,6 +92,7 @@ class Talon: UIViewController {
     var kvote1: UILabel = {
         let label = UILabel(frame: .zero)
         label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
         label.font = Constants.fontKvote
         label.text = "1"
         label.textColor = .white
@@ -98,6 +103,7 @@ class Talon: UIViewController {
         let label = UILabel(frame: .zero)
         label.textAlignment = .center
         label.font = Constants.fontKvote
+        label.adjustsFontSizeToFitWidth = true
         label.text = "2"
         label.textColor = .white
         label.numberOfLines = 0
@@ -108,6 +114,7 @@ class Talon: UIViewController {
         label.textAlignment = .center
         label.font = Constants.fontKvote
         label.text = "3"
+        label.adjustsFontSizeToFitWidth = true
         label.textColor = .white
         label.numberOfLines = 0
         return label
@@ -116,6 +123,7 @@ class Talon: UIViewController {
         let label = UILabel(frame: .zero)
         label.textAlignment = .center
         label.font = Constants.fontKvote
+        label.adjustsFontSizeToFitWidth = true
         label.text = "4"
         label.textColor = .white
         label.numberOfLines = 0
@@ -125,6 +133,7 @@ class Talon: UIViewController {
         let label = UILabel(frame: .zero)
         label.textAlignment = .center
         label.font = Constants.fontKvote
+        label.adjustsFontSizeToFitWidth = true
         label.text = "5"
         label.textColor = .white
         label.numberOfLines = 0
@@ -134,6 +143,7 @@ class Talon: UIViewController {
         let label = UILabel(frame: .zero)
         label.textAlignment = .center
         label.font = Constants.fontKvote
+        label.adjustsFontSizeToFitWidth = true
         label.text = "6"
         label.textColor = .white
         label.numberOfLines = 0
@@ -144,6 +154,7 @@ class Talon: UIViewController {
         label.textAlignment = .center
         label.font = Constants.fontKvote
         label.text = "7"
+        label.adjustsFontSizeToFitWidth = true
         label.textColor = .white
         label.numberOfLines = 0
         return label
@@ -152,6 +163,7 @@ class Talon: UIViewController {
         let label = UILabel(frame: .zero)
         label.textAlignment = .center
         label.text = "3.75"
+        label.adjustsFontSizeToFitWidth = true
         label.font = Constants.fontKvote
         label.textColor = .white
         label.numberOfLines = 0
@@ -160,6 +172,7 @@ class Talon: UIViewController {
     var kvote14: UILabel = {
         let label = UILabel(frame: .zero)
         label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
         label.text = "14"
         label.font = Constants.fontKvote
         label.textColor = .white
@@ -170,6 +183,7 @@ class Talon: UIViewController {
         let label = UILabel(frame: .zero)
         label.textAlignment = .center
         label.text = "65"
+        label.adjustsFontSizeToFitWidth = true
         label.font = Constants.fontKvote
         label.textColor = .white
         label.numberOfLines = 0
@@ -180,6 +194,7 @@ class Talon: UIViewController {
         label.textAlignment = .center
         label.text = "275"
         label.font = Constants.fontKvote
+        label.adjustsFontSizeToFitWidth = true
         label.textColor = .white
         label.numberOfLines = 0
         return label
@@ -189,6 +204,7 @@ class Talon: UIViewController {
         label.textAlignment = .center
         label.text = "1350"
         label.font = Constants.fontKvote
+        label.adjustsFontSizeToFitWidth = true
         label.textColor = .white
         label.numberOfLines = 0
         return label
@@ -199,6 +215,7 @@ class Talon: UIViewController {
         label.text = "6500"
         label.textColor = .white
         label.font = Constants.fontKvote
+        label.adjustsFontSizeToFitWidth = true
         label.numberOfLines = 0
         return label
     }()
@@ -207,6 +224,7 @@ class Talon: UIViewController {
         label.textAlignment = .center
         label.text = "25000"
         label.font = Constants.fontKvote
+        label.adjustsFontSizeToFitWidth = true
         label.textColor = .white
         label.numberOfLines = 0
         return label
@@ -214,6 +232,7 @@ class Talon: UIViewController {
     var kvotelinija: UILabel = {
         let label = UILabel(frame: .zero)
         label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
         label.textColor = .white
         label.backgroundColor = .lightGray
         label.numberOfLines = 0

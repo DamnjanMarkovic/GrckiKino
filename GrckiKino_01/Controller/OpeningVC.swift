@@ -30,8 +30,8 @@ class OpeningVC: UIViewController {
     var naslovIgre: UILabel = {
         let label = UILabel(frame: .zero)
         label.textAlignment = .center
-        label.textColor = UIColor.white
         label.adjustsFontSizeToFitWidth = true
+        label.textColor = UIColor.white
         label.font = UIFont.systemFont(ofSize: 20)
         label.layer.borderColor = UIColor.black.cgColor
         label.layer.borderWidth = 3.0

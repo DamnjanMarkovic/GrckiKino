@@ -20,6 +20,7 @@ class NarednaKolaHeader: UITableViewHeaderFooterView {
         let label = UILabel()
         label.layer.cornerRadius = 5
         label.numberOfLines = 0
+        label.adjustsFontSizeToFitWidth = true
         label.textColor = UIColor.white
         label.lineBreakMode = .byWordWrapping
         label.textAlignment = .center
@@ -31,7 +32,7 @@ class NarednaKolaHeader: UITableViewHeaderFooterView {
     }()
     let preostaloZaUplatu: UILabel = {
         let label = UILabel()
-        
+        label.adjustsFontSizeToFitWidth = true
         label.layer.cornerRadius = 5
         label.textColor = UIColor.white
         label.textAlignment = .center

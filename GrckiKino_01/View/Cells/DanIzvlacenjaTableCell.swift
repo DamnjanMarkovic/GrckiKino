@@ -18,6 +18,7 @@ class DanIzvlacenjaTableCell: UITableViewCell {
         let label = UILabel(frame: .zero)
         label.textAlignment = .center
         label.textColor = .white
+        label.adjustsFontSizeToFitWidth = true
         label.numberOfLines = 0
         label.layer.borderWidth = 3.0
         return label

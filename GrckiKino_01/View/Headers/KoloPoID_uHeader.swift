@@ -18,8 +18,9 @@ class KoloPoID_uHeader: UICollectionViewCell {
     let headerLabela: UILabel = {
         let title = UILabel()
         title.textColor = .white
-        title.backgroundColor = .black
         title.font = Constants.fontSvuda
+        title.adjustsFontSizeToFitWidth = true
+        title.backgroundColor = .black
         title.translatesAutoresizingMaskIntoConstraints = false
         return title
     }()

@@ -186,7 +186,7 @@ extension DanIzvlacenjaVC: UICollectionViewDataSource, UICollectionViewDelegate,
         String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier:
                                                                             headerIdentifier, for: indexPath) as! DanIzvlacenjaHeader
-        header.headerLabela.text = "Kolo broj: \(kolaUDanu[collectionView.tag].drawId) od \(TimeFunctions.vratiVremeUMinutima(timeAsTimestamp: kolaUDanu[collectionView.tag].drawTime)) dana \(TimeFunctions.vratiDan(timeAsTimestamp: kolaUDanu[collectionView.tag].drawTime)). "
+        header.headerLabela.text = "Kolo broj: \(kolaUDanu[collectionView.tag].drawId) od \(TimeFunctions.vratiVremeUMinutima(timeAsTimestamp: kolaUDanu[collectionView.tag].drawTime)) \(TimeFunctions.vratiDan(timeAsTimestamp: kolaUDanu[collectionView.tag].drawTime)). "
             return header
     }
     

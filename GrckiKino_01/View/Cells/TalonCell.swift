@@ -16,6 +16,7 @@ class TalonCell: UICollectionViewCell {
         label.textAlignment = .center
         label.textColor = .lightGray
         label.numberOfLines = 0
+        label.adjustsFontSizeToFitWidth = true
         label.layer.borderWidth = 3.0
         label.layer.backgroundColor = UIColor.clear.cgColor
         return label

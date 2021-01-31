@@ -15,6 +15,7 @@ class DanIzvlacenjaCVCell: UICollectionViewCell {
         label.textColor = .white
         label.numberOfLines = 0
         label.font = Constants.fontBrojevi
+        label.adjustsFontSizeToFitWidth = true
         label.layer.borderWidth = 3.0
         label.layer.backgroundColor = UIColor.black.cgColor
         return label

@@ -20,6 +20,7 @@ class DanIzvlacenjaHeader: UICollectionViewCell {
         let title = UILabel()
         title.textColor = .white
         title.backgroundColor = .black
+        title.adjustsFontSizeToFitWidth = true
         title.font = Constants.fontSvuda
         title.translatesAutoresizingMaskIntoConstraints = false
         return title
