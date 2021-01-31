@@ -14,6 +14,7 @@ class Talon: UIViewController {
     var listaSvihBrojeva = [Int]()
     var listaIzabranihBrojeva = [Int]()
     var listaSlucajnihBrojeva = [Int]()
+    var listaIzabranihBrojevaZaSlanje = String()
     
     var ukupnoIzabranoBrojeva = 0 {
         didSet {
@@ -283,14 +284,135 @@ class Talon: UIViewController {
     
     
     @objc func posaljiIzabraneBrojeve() {
-        let ac = UIAlertController(title: "Idemo na slanje brojeva.", message: nil, preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "DA!", style: .default, handler: nil))
+        var symbolEnding = ", "
+        
+        let sortedList = listaIzabranihBrojeva.sorted()
+        for (idx, item) in sortedList.enumerated() {
+            if idx == listaIzabranihBrojeva.endIndex-1 {
+                symbolEnding = "."
+            }
+            listaIzabranihBrojevaZaSlanje.append("\(item)\(symbolEnding)")
+        }
+        
+        let ac = UIAlertController(title: "Salju se brojevi: \n\(listaIzabranihBrojevaZaSlanje)", message: nil, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Salji!", style: .default, handler: nil))
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         self.present(ac, animated: true)
 
     }
     
-    //MARK: UI-Postavke, funkcije
+    
+    ///funkcija koja obezbedjuje postavljanje informacija, koriscenjem did-Set property-observera
+    
+    func postaviInformacije() {
+
+        podaciOIzabranomKolu.text = "Vreme izvlacenja: \(TimeFunctions.vratiVremeUMinutima(timeAsTimestamp: koloKliknuto.drawTime)) | Kolo: \(koloKliknuto.drawId)"
+
+        ukupnoIzabranoBrojevaLabela.text = "Izabrano brojeva: \n\(ukupnoIzabranoBrojeva)"
+    }
+    
+    
+    ///funkcija koja obezbedjuje unos brojeva u listu, a nakon toga kreiranje Collection-view-a koji ce biti "napunjen" brojevima iz liste
+    
+    func postaviBrojeve() {
+        ubaciBrojeveUListu()
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.register(TalonCell.self, forCellWithReuseIdentifier: collectionCellIdentifier)
+        collectionView.backgroundColor = UIColor.darkGray
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        brojevi.addSubview(collectionView)
+    }
+    
+    ///funkcija koja vodi na izbor slucajnih brojeva
+    
+    @objc func izaberiSlucajneBrojeve() {
+        
+        let ac = UIAlertController(title: "Da izaberem slucajne brojeve???", message: nil, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "DA!", style: .default, handler: izaberiIPostaviSlucajneBrojeve))
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(ac, animated: true)
+    }
+    
+    ///Izbor slucajnih brojeva, imajuci u vidu da se, ako se ponovo pokrene akcija, prethodni brojevi  izbrisu
+    
+    @objc func izaberiIPostaviSlucajneBrojeve(_ sender: UIAlertAction) {
+        for i in 0..<80 {
+            
+            let indexPath = IndexPath(row: i, section: 0)
+            let cell:TalonCell = collectionView.cellForItem(at: indexPath)! as! TalonCell
+            cell.broj.layer.borderColor = Constants.borderColorOriginalTalonCell
+        }
+        listaIzabranihBrojeva.removeAll()
+        listaSlucajnihBrojeva.removeAll()
+        
+        ///slucajni brojevi ce se birati tako sto ce se brojevi promesati i uzeti prvih 15 brojeva
+        
+        let sequence = 1 ..< 80
+        let shuffledSequence = sequence.shuffled()
+        
+        for i in 0..<15 {
+            listaSlucajnihBrojeva.append(shuffledSequence[i])
+        }
+        
+        for item in listaSlucajnihBrojeva {
+            listaIzabranihBrojeva.append(item)
+        }
+        
+        ukupnoIzabranoBrojeva = listaIzabranihBrojeva.count
+        
+        for item in listaSlucajnihBrojeva {
+            let indexPath = IndexPath(row: item-1, section: 0)
+            let cell:TalonCell = collectionView.cellForItem(at: indexPath)! as! TalonCell
+            cell.broj.layer.borderColor = UIColor.green.cgColor
+        }
+    }
+    
+    
+    ///Ubacivanje brojeva u listu
+    
+    func ubaciBrojeveUListu() {
+        for i in 1..<81 {
+            listaSvihBrojeva.append(i)
+        }
+    }
+    
+    ///Provera da li je broj vec kliknut
+    
+    func brojJeVecKliknut(brojKliknut: Int) -> Bool {
+        if listaIzabranihBrojeva.contains(brojKliknut) {
+                return true
+        }
+        return false
+    }
+    
+    
+    ///po izboru broja, vrsi se provera da li je taj broj vec u listi i dodaje se, ako nije, a sklanja, ako jeste. to vodi i ka zaokruzivanju i otkruzivanju broja (mislim da sam izmislio novu rec)
+    
+    func procesuirajKliknutiBroj(brojKliknut: Int) {
+        
+        if (brojJeVecKliknut(brojKliknut: brojKliknut)){
+            if let index = listaIzabranihBrojeva.firstIndex(of: brojKliknut) {
+                listaIzabranihBrojeva.remove(at: index)
+                ukupnoIzabranoBrojeva -= 1
+            }
+        }
+        else {
+            if listaIzabranihBrojeva.count < 15 {
+                listaIzabranihBrojeva.append(brojKliknut)
+                ukupnoIzabranoBrojeva += 1
+            }
+            else {
+                let alert = AlertInfo.alert(message: "Maksimalni broj brojeva je 15.")
+                self.present(alert, animated: true)
+            }
+        }
+    }
+    
+    
+//MARK: -- UI Postavke
     
     func postaviUI() {
         postaviBrojeve()
@@ -367,116 +489,7 @@ class Talon: UIViewController {
         
 
     }
-    
-    ///funkcija koja obezbedjuje postavljanje informacija, koriscenjem property-observera
-    
-    func postaviInformacije() {
 
-        podaciOIzabranomKolu.text = "Vreme izvlacenja: \(TimeFunctions.vratiVremeUMinutima(timeAsTimestamp: koloKliknuto.drawTime)) | Kolo: \(koloKliknuto.drawId)"
-
-        ukupnoIzabranoBrojevaLabela.text = "Izabrano brojeva: \n\(ukupnoIzabranoBrojeva)"
-    }
-    
-    
-    ///funkcija koja obezbedjuje unos brojeva u listu, a nakon toga kreiranje Collection-view-a koji ce biti "napunjen" brojevima iz liste
-    
-    func postaviBrojeve() {
-        ubaciBrojeveUListu()
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(TalonCell.self, forCellWithReuseIdentifier: collectionCellIdentifier)
-        collectionView.backgroundColor = UIColor.darkGray
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        brojevi.addSubview(collectionView)
-    }
-    
-    func postaviOstaleLabele() {
-        
-        podaciOIzabranomKolu.frame = CGRect(x: 0, y: brojevi.height, width: view.width, height: 100)
-        view.addSubview(podaciOIzabranomKolu)
-    }
-    
-    
-    @objc func izaberiSlucajneBrojeve() {
-        
-        let ac = UIAlertController(title: "Da izaberem slucajne brojeve???", message: nil, preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "DA!", style: .default, handler: izaberiIPostaviSlucajneBrojeve))
-        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        self.present(ac, animated: true)
-    }
-    
-    ///Izbor slucajnih brojeva, imajuci u vidu da, ako se ponovo pokrene akcija, prethodni brojevi se izbrisu
-    
-    @objc func izaberiIPostaviSlucajneBrojeve(_ sender: UIAlertAction) {
-        for i in 0..<80 {
-            
-            let indexPath = IndexPath(row: i, section: 0)
-            let cell:TalonCell = collectionView.cellForItem(at: indexPath)! as! TalonCell
-            cell.broj.layer.borderColor = Constants.borderColorOriginalTalonCell
-        }
-        listaIzabranihBrojeva.removeAll()
-        listaSlucajnihBrojeva.removeAll()
-        let sequence = 1 ..< 80
-        let shuffledSequence = sequence.shuffled()
-        for i in 0..<15 {
-            listaSlucajnihBrojeva.append(shuffledSequence[i])
-        }
-        
-        for item in listaSlucajnihBrojeva {
-            listaIzabranihBrojeva.append(item)
-        }
-        
-        ukupnoIzabranoBrojeva = listaIzabranihBrojeva.count
-        
-        for item in listaSlucajnihBrojeva {
-            let indexPath = IndexPath(row: item, section: 0)
-            let cell:TalonCell = collectionView.cellForItem(at: indexPath)! as! TalonCell
-            cell.broj.layer.borderColor = UIColor.green.cgColor
-        }
-    }
-    
-    
-    ///Ubacivanje brojeva u listu
-    
-    func ubaciBrojeveUListu() {
-        for i in 1..<81 {
-            listaSvihBrojeva.append(i)
-        }
-    }
-    
-    ///Provera da li je broj vec kliknut
-    
-    func brojJeVecKliknut(brojKliknut: Int) -> Bool {
-        if listaIzabranihBrojeva.contains(brojKliknut) {
-                return true
-        }
-        return false
-    }
-    
-    
-    ///po izboru broja, vrsi se provera da li je taj broj vec u listi i dodaje se, ako nije, a sklanja, ako jeste. to vodi i ka zaokruzivanju i otkruzivanju broja (mislim da sam izmislio novu rec)
-    
-    func procesuirajKliknutiBroj(brojKliknut: Int) {
-        
-        if (brojJeVecKliknut(brojKliknut: brojKliknut)){
-            if let index = listaIzabranihBrojeva.firstIndex(of: brojKliknut) {
-                listaIzabranihBrojeva.remove(at: index)
-                ukupnoIzabranoBrojeva -= 1
-            }
-        }
-        else {
-            if listaIzabranihBrojeva.count < 15 {
-                listaIzabranihBrojeva.append(brojKliknut)
-                ukupnoIzabranoBrojeva += 1
-            }
-            else {
-                let alert = AlertInfo.alert(message: "Maksimalni broj brojeva je 15.")
-                self.present(alert, animated: true)
-            }
-        }
-    }
 }
 
 
