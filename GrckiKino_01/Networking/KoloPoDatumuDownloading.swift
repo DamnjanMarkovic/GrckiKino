@@ -18,6 +18,7 @@ struct KoloPoDatumuDownloading {
     var delegate: KolaPoDatumuDownloadingingDelegate?
     
     
+    
     func vratiKolaPoDatumu(datum: String, completition: @escaping ((_ success: Bool) -> ())) {
         
         let url = URL (string: "\(Constants.apiRealizovanoKolo)draw-date/\(datum)/\(datum)")
@@ -44,10 +45,6 @@ struct KoloPoDatumuDownloading {
                 }
             }
         }
-        
-        
-        
-
     }
     
     

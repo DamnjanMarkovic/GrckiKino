@@ -17,6 +17,7 @@ class TalonCell: UICollectionViewCell {
         label.textColor = .lightGray
         label.numberOfLines = 0
         label.adjustsFontSizeToFitWidth = true
+        label.layer.cornerRadius = 14
         label.layer.borderWidth = 3.0
         label.layer.backgroundColor = UIColor.clear.cgColor
         return label
@@ -25,35 +26,12 @@ class TalonCell: UICollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        setupViews()
-        setupLayouts()
+        contentView.addSubview(broj, anchors: [.leading(0), .trailing(0), .bottom(0), .top(0)])
     }
 
-    private func setupViews() {
-        contentView.clipsToBounds = true
-        contentView.layer.cornerRadius = Constants.cornerRadiusTalonCell
-        contentView.backgroundColor = Constants.colorOriginalTalonCell
-        contentView.addSubview(broj)
-
-    }
-
-    private func setupLayouts() {
-        broj.layer.cornerRadius = 14
-        
-
-        
-        broj.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            broj.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            broj.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            broj.topAnchor.constraint(equalTo: contentView.topAnchor),
-            broj.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
-        ])
 
 
-
-    }
+ 
  
 
     required init?(coder: NSCoder) {

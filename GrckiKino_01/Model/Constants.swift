@@ -10,6 +10,11 @@ import UIKit
 struct Constants {
     
 
+
+    
+    
+    
+    
     static var fontSvuda = UIFont.systemFont(ofSize: 20)
     static var fontKvote = UIFont.systemFont(ofSize: 14)
     static var fontBrojevi = UIFont.systemFont(ofSize: 30)
@@ -39,6 +44,21 @@ struct Constants {
     static var apiRealizovanoKolo = "https://api.opap.gr/draws/v3.0/1100/"
     
     static var apiUzivoIzvlacenje = "https://ds.opap.gr/web_kino/kinoIframe.html?link=https://ds.opap.gr/web_kino/kino/html/Internet_PRODUCTION/KinoDraw_201910.html&resolution=847x500"
+    
+    enum URLStrings {
+        static func getUpcomingDrawsURL(drawsCount: Int) -> String {
+            "https://api.opap.gr/draws/v3.0/1100/upcoming/\(drawsCount)"
+        }
+        static func getPastDrawsUrlFromDateToDate(fromDate : String, toDate: String) -> String {
+            "https://api.opap.gr/draws/v3.0/1100/draw-date/\(fromDate)/\(toDate)"
+        }
+        
+        static func sepcificDrawURL (drawID : String) -> String {
+            "https://api.opap.gr/draws/v3.0/1100/\(drawID)"
+        }
+        
+        static let drawAnimationUrl = "https://ds.opap.gr/web_kino/kinoIframe.html?link=https://ds.opap.gr/web_kino/kino/html/Internet_PRODUCTION/KinoDraw_201910.html&resolution=847x500"
+    }
 }
 
 

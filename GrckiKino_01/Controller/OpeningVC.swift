@@ -35,7 +35,9 @@ class OpeningVC: UIViewController {
         label.font = UIFont.systemFont(ofSize: 20)
         label.layer.borderColor = UIColor.black.cgColor
         label.layer.borderWidth = 3.0
+        label.layer.cornerRadius = 10
         label.numberOfLines = 0
+        label.text = "GRCKI KINO"
         label.layer.backgroundColor = UIColor.blue.cgColor
         return label
     }()
@@ -55,20 +57,15 @@ class OpeningVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .lightGray
 
+
         setUI()
     }
     
     func setUI() {
         
-        naslovIgre.text = "GRCKI KINO"
-        naslovIgre.frame = CGRect(x: view.width/4, y: view.height/2, width: view.width/2, height: 100)
-        lineInBetween.frame = CGRect(x: 10, y: naslovIgre.top - 35, width: view.width-20, height: 1)
-        ulazUIgruButton.frame = CGRect(x: view.width/4, y: view.height/4, width: view.width/2,height: 100)
-
-        
-        view.addSubview(naslovIgre)
-        view.addSubview(lineInBetween)
-        view.addSubview(ulazUIgruButton)
+        view.addSubview(naslovIgre, anchors: [.centerX(0), .centerY(-100), .width(200), .height(100)])
+        view.addSubview(lineInBetween, anchors: [.centerX(0), .centerY(0), .width(200), .height(2)])
+        view.addSubview(ulazUIgruButton, anchors: [.centerX(0), .centerY(100), .width(200), .height(100)])
     }
     
     @objc func idemoNaIgru() {

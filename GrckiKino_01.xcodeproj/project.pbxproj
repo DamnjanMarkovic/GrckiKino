@@ -39,6 +39,10 @@
 		6630978825C29097006C78B8 /* NarednaKolaHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6630978725C29097006C78B8 /* NarednaKolaHeader.swift */; };
 		6635499425C2BC4000CCD205 /* TalonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6635499325C2BC4000CCD205 /* TalonCell.swift */; };
 		6654DC8A25C555D000CE727E /* KoloPoID_uHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6654DC8925C555D000CE727E /* KoloPoID_uHeader.swift */; };
+		6674C35525D035C10050C7C6 /* AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6674C35425D035C10050C7C6 /* AutoLayout.swift */; };
+		6674C35A25D040460050C7C6 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6674C35925D040460050C7C6 /* APIService.swift */; };
+		6674C36025D054C60050C7C6 /* KvoteLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6674C35F25D054C60050C7C6 /* KvoteLabel.swift */; };
+		6674C36525D06F880050C7C6 /* KvoteLabela.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6674C36425D06F880050C7C6 /* KvoteLabela.swift */; };
 		66E6D34F25C48CDB004FD2C4 /* OpeningVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E6D34E25C48CDB004FD2C4 /* OpeningVC.swift */; };
 		66E6D36125C49B42004FD2C4 /* DanIzvlacenjaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E6D36025C49B42004FD2C4 /* DanIzvlacenjaVC.swift */; };
 		66E6D36F25C4ACA9004FD2C4 /* KoloPoID_uCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E6D36E25C4ACA9004FD2C4 /* KoloPoID_uCell.swift */; };
@@ -102,6 +106,10 @@
 		6630978725C29097006C78B8 /* NarednaKolaHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NarednaKolaHeader.swift; sourceTree = "<group>"; };
 		6635499325C2BC4000CCD205 /* TalonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalonCell.swift; sourceTree = "<group>"; };
 		6654DC8925C555D000CE727E /* KoloPoID_uHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoloPoID_uHeader.swift; sourceTree = "<group>"; };
+		6674C35425D035C10050C7C6 /* AutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayout.swift; sourceTree = "<group>"; };
+		6674C35925D040460050C7C6 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		6674C35F25D054C60050C7C6 /* KvoteLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KvoteLabel.swift; sourceTree = "<group>"; };
+		6674C36425D06F880050C7C6 /* KvoteLabela.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KvoteLabela.swift; sourceTree = "<group>"; };
 		66E6D34E25C48CDB004FD2C4 /* OpeningVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpeningVC.swift; sourceTree = "<group>"; };
 		66E6D36025C49B42004FD2C4 /* DanIzvlacenjaVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DanIzvlacenjaVC.swift; sourceTree = "<group>"; };
 		66E6D36E25C4ACA9004FD2C4 /* KoloPoID_uCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoloPoID_uCell.swift; sourceTree = "<group>"; };
@@ -157,6 +165,7 @@
 		6625E83C25C1DE6A00708D68 /* GrckiKino_01 */ = {
 			isa = PBXGroup;
 			children = (
+				6674C35E25D054A20050C7C6 /* CustomElements */,
 				6625E8C125C1EB8400708D68 /* Networking */,
 				6625E8AE25C1EA7200708D68 /* Helpers */,
 				6625E89925C1E0D500708D68 /* Controller */,
@@ -233,6 +242,7 @@
 				6625E8B725C1EAD100708D68 /* AlertInfo.swift */,
 				6625E8D425C1F5D200708D68 /* TimeFunctions.swift */,
 				6614156A25C6078D00F60413 /* Error.swift */,
+				6674C35425D035C10050C7C6 /* AutoLayout.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -245,6 +255,7 @@
 				6614155425C5F70E00F60413 /* KoloPoID_uDownloading.swift */,
 				6614156225C5FDC600F60413 /* KoloPoDatumuDownloading.swift */,
 				6614156F25C608FC00F60413 /* JSONParser.swift */,
+				6674C35925D040460050C7C6 /* APIService.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -269,6 +280,15 @@
 				66E6D39B25C4CD72004FD2C4 /* DanIzvlacenjaCVCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		6674C35E25D054A20050C7C6 /* CustomElements */ = {
+			isa = PBXGroup;
+			children = (
+				6674C35F25D054C60050C7C6 /* KvoteLabel.swift */,
+				6674C36425D06F880050C7C6 /* KvoteLabela.swift */,
+			);
+			path = CustomElements;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -400,6 +420,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6674C36525D06F880050C7C6 /* KvoteLabela.swift in Sources */,
 				6630978825C29097006C78B8 /* NarednaKolaHeader.swift in Sources */,
 				6614154425C5E5A300F60413 /* NarednaKolaDownload.swift in Sources */,
 				66E6D38925C4B498004FD2C4 /* DanIzvlacenjaTableCell.swift in Sources */,
@@ -409,11 +430,13 @@
 				6625E8B825C1EAD100708D68 /* AlertInfo.swift in Sources */,
 				6625E8D525C1F5D200708D68 /* TimeFunctions.swift in Sources */,
 				6614155525C5F70E00F60413 /* KoloPoID_uDownloading.swift in Sources */,
+				6674C36025D054C60050C7C6 /* KvoteLabel.swift in Sources */,
 				6625E8CB25C1ED2300708D68 /* NarednoKolo.swift in Sources */,
 				6625E83E25C1DE6A00708D68 /* AppDelegate.swift in Sources */,
 				662C0E1B25C3CEF7005D4726 /* KolaZaIzabraniDan.swift in Sources */,
 				66E6D36125C49B42004FD2C4 /* DanIzvlacenjaVC.swift in Sources */,
 				6654DC8A25C555D000CE727E /* KoloPoID_uHeader.swift in Sources */,
+				6674C35525D035C10050C7C6 /* AutoLayout.swift in Sources */,
 				66E6D36F25C4ACA9004FD2C4 /* KoloPoID_uCell.swift in Sources */,
 				6625E84025C1DE6A00708D68 /* SceneDelegate.swift in Sources */,
 				662C0E1325C3CC69005D4726 /* DanIzvlacenjaHeader.swift in Sources */,
@@ -421,6 +444,7 @@
 				6614156325C5FDC600F60413 /* KoloPoDatumuDownloading.swift in Sources */,
 				6625E8EC25C22E1200708D68 /* ContainerTabs.swift in Sources */,
 				66E6D34F25C48CDB004FD2C4 /* OpeningVC.swift in Sources */,
+				6674C35A25D040460050C7C6 /* APIService.swift in Sources */,
 				6614156B25C6078D00F60413 /* Error.swift in Sources */,
 				6625E8DC25C2140900708D68 /* NarednaKolaCell.swift in Sources */,
 				6625E8E725C22BEA00708D68 /* Talon.swift in Sources */,

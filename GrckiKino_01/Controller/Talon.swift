@@ -15,40 +15,25 @@ class Talon: UIViewController {
     var listaIzabranihBrojeva = [Int]()
     var listaSlucajnihBrojeva = [Int]()
     var listaIzabranihBrojevaZaSlanje = String()
-    
     var ukupnoIzabranoBrojeva = 0 {
         didSet {
             ukupnoIzabranoBrojevaLabela.text =  "Izabrano brojeva: \n\(ukupnoIzabranoBrojeva)"
         }
     }
     
-    //MARK: - UI Postavke, elementi
     
-    
-    var podaciOIzabranomKolu: UILabel = {
-        let label = UILabel(frame: .zero)
-        label.textAlignment = .center
-        label.textColor = .white
-        label.adjustsFontSizeToFitWidth = true
-        label.backgroundColor = .darkGray
-        label.numberOfLines = 0
-        label.layer.backgroundColor = UIColor.clear.cgColor
-        return label
+    private var brojevi: UIView = {
+        let view = UIView()
+        view.clipsToBounds = true
+        return view
     }()
-    
-    var ukupnoIzabranoBrojevaLabela: UILabel = {
-        let label = UILabel(frame: .zero)
-        label.textAlignment = .center
-        label.textColor = .white
-        label.backgroundColor = .darkGray
-        label.numberOfLines = 0
-        label.adjustsFontSizeToFitWidth = true
-        label.layer.borderWidth = 2
-        label.layer.borderColor = UIColor.black.cgColor
-        label.layer.cornerRadius = 14
-        label.layer.backgroundColor = UIColor.clear.cgColor
-        return label
+    private let kvote: UIView = {
+        let view = UIView()
+        view.clipsToBounds = true
+        return view
     }()
+    var podaciOIzabranomkolu = UILabel()
+    var ukupnoIzabranoBrojevaLabela = UILabel()
     
     let slucajniBrojevi: UIButton = {
         
@@ -62,200 +47,12 @@ class Talon: UIViewController {
         return button
     }()
     
-    private let kvote: UIView = {
-        let view = UIView()
-        view.clipsToBounds = true
-        view.backgroundColor = .darkGray
-        return view
-    }()
-    
-    
-    var kvoteBK: UILabel = {
-        let label = UILabel(frame: .zero)
-        label.textAlignment = .center
-        label.textColor = .white
-        label.adjustsFontSizeToFitWidth = true
-        label.font = Constants.fontKvote
-        label.text = "B.K"
-        label.numberOfLines = 0
-        return label
-    }()
-    var kvoteKvota: UILabel = {
-        let label = UILabel(frame: .zero)
-        label.adjustsFontSizeToFitWidth = true
-        label.textAlignment = .center
-        label.text = "Kvota"
-        label.font = Constants.fontKvote
-        label.textColor = .white
-        label.numberOfLines = 0
-        return label
-    }()
-    var kvote1: UILabel = {
-        let label = UILabel(frame: .zero)
-        label.textAlignment = .center
-        label.adjustsFontSizeToFitWidth = true
-        label.font = Constants.fontKvote
-        label.text = "1"
-        label.textColor = .white
-        label.numberOfLines = 0
-        return label
-    }()
-    var kvote2: UILabel = {
-        let label = UILabel(frame: .zero)
-        label.textAlignment = .center
-        label.font = Constants.fontKvote
-        label.adjustsFontSizeToFitWidth = true
-        label.text = "2"
-        label.textColor = .white
-        label.numberOfLines = 0
-        return label
-    }()
-    var kvote3: UILabel = {
-        let label = UILabel(frame: .zero)
-        label.textAlignment = .center
-        label.font = Constants.fontKvote
-        label.text = "3"
-        label.adjustsFontSizeToFitWidth = true
-        label.textColor = .white
-        label.numberOfLines = 0
-        return label
-    }()
-    var kvote4: UILabel = {
-        let label = UILabel(frame: .zero)
-        label.textAlignment = .center
-        label.font = Constants.fontKvote
-        label.adjustsFontSizeToFitWidth = true
-        label.text = "4"
-        label.textColor = .white
-        label.numberOfLines = 0
-        return label
-    }()
-    var kvote5: UILabel = {
-        let label = UILabel(frame: .zero)
-        label.textAlignment = .center
-        label.font = Constants.fontKvote
-        label.adjustsFontSizeToFitWidth = true
-        label.text = "5"
-        label.textColor = .white
-        label.numberOfLines = 0
-        return label
-    }()
-    var kvote6: UILabel = {
-        let label = UILabel(frame: .zero)
-        label.textAlignment = .center
-        label.font = Constants.fontKvote
-        label.adjustsFontSizeToFitWidth = true
-        label.text = "6"
-        label.textColor = .white
-        label.numberOfLines = 0
-        return label
-    }()
-    var kvote7: UILabel = {
-        let label = UILabel(frame: .zero)
-        label.textAlignment = .center
-        label.font = Constants.fontKvote
-        label.text = "7"
-        label.adjustsFontSizeToFitWidth = true
-        label.textColor = .white
-        label.numberOfLines = 0
-        return label
-    }()
-    var kvote3_75: UILabel = {
-        let label = UILabel(frame: .zero)
-        label.textAlignment = .center
-        label.text = "3.75"
-        label.adjustsFontSizeToFitWidth = true
-        label.font = Constants.fontKvote
-        label.textColor = .white
-        label.numberOfLines = 0
-        return label
-    }()
-    var kvote14: UILabel = {
-        let label = UILabel(frame: .zero)
-        label.textAlignment = .center
-        label.adjustsFontSizeToFitWidth = true
-        label.text = "14"
-        label.font = Constants.fontKvote
-        label.textColor = .white
-        label.numberOfLines = 0
-        return label
-    }()
-    var kvote65: UILabel = {
-        let label = UILabel(frame: .zero)
-        label.textAlignment = .center
-        label.text = "65"
-        label.adjustsFontSizeToFitWidth = true
-        label.font = Constants.fontKvote
-        label.textColor = .white
-        label.numberOfLines = 0
-        return label
-    }()
-    var kvote275: UILabel = {
-        let label = UILabel(frame: .zero)
-        label.textAlignment = .center
-        label.text = "275"
-        label.font = Constants.fontKvote
-        label.adjustsFontSizeToFitWidth = true
-        label.textColor = .white
-        label.numberOfLines = 0
-        return label
-    }()
-    var kvote1350: UILabel = {
-        let label = UILabel(frame: .zero)
-        label.textAlignment = .center
-        label.text = "1350"
-        label.font = Constants.fontKvote
-        label.adjustsFontSizeToFitWidth = true
-        label.textColor = .white
-        label.numberOfLines = 0
-        return label
-    }()
-    var kvote6500: UILabel = {
-        let label = UILabel(frame: .zero)
-        label.textAlignment = .center
-        label.text = "6500"
-        label.textColor = .white
-        label.font = Constants.fontKvote
-        label.adjustsFontSizeToFitWidth = true
-        label.numberOfLines = 0
-        return label
-    }()
-    var kvote25000: UILabel = {
-        let label = UILabel(frame: .zero)
-        label.textAlignment = .center
-        label.text = "25000"
-        label.font = Constants.fontKvote
-        label.adjustsFontSizeToFitWidth = true
-        label.textColor = .white
-        label.numberOfLines = 0
-        return label
-    }()
-    var kvotelinija: UILabel = {
-        let label = UILabel(frame: .zero)
-        label.textAlignment = .center
-        label.adjustsFontSizeToFitWidth = true
-        label.textColor = .white
-        label.backgroundColor = .lightGray
-        label.numberOfLines = 0
-        return label
-    }()
-
-    
     var collectionView: UICollectionView = {
         let viewLayout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: viewLayout)
         collectionView.backgroundColor = .darkGray
         return collectionView
     }()
-    
-    
-    private var brojevi: UIView = {
-        let view = UIView()
-        view.clipsToBounds = true
-        view.backgroundColor = .yellow
-        return view
-    }()
-    
     
     //MARK: -- Funkcije
     
@@ -276,12 +73,10 @@ class Talon: UIViewController {
     ///funkcija koja vraca na prethodni, glavni meni
     
     @objc func vratiSeNazad() {
-
         self.dismiss(animated: true)
     }
 
     ///funkcija koja vrsi pripremu za slanje brojeva :)
-    
     
     @objc func posaljiIzabraneBrojeve() {
         var symbolEnding = ", "
@@ -307,24 +102,9 @@ class Talon: UIViewController {
     
     func postaviInformacije() {
 
-        podaciOIzabranomKolu.text = "Vreme izvlacenja: \(TimeFunctions.vratiVremeUMinutima(timeAsTimestamp: koloKliknuto.drawTime)) | Kolo: \(koloKliknuto.drawId)"
+        podaciOIzabranomkolu.text = "Vreme izvlacenja: \(TimeFunctions.vratiVremeUMinutima(timeAsTimestamp: koloKliknuto.drawTime)) | Kolo: \(koloKliknuto.drawId)"
 
         ukupnoIzabranoBrojevaLabela.text = "Izabrano brojeva: \n\(ukupnoIzabranoBrojeva)"
-    }
-    
-    
-    ///funkcija koja obezbedjuje unos brojeva u listu, a nakon toga kreiranje Collection-view-a koji ce biti "napunjen" brojevima iz liste
-    
-    func postaviBrojeve() {
-        ubaciBrojeveUListu()
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(TalonCell.self, forCellWithReuseIdentifier: collectionCellIdentifier)
-        collectionView.backgroundColor = UIColor.darkGray
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        brojevi.addSubview(collectionView)
     }
     
     ///funkcija koja vodi na izbor slucajnih brojeva
@@ -411,93 +191,96 @@ class Talon: UIViewController {
             }
         }
     }
-    
-    
-//MARK: -- UI Postavke
-    
-    func postaviUI() {
-        postaviBrojeve()
-        let kvoteHeight = CGFloat(100)
-        view.addSubview(brojevi)
-        brojevi.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
-        
-        view.addSubview(podaciOIzabranomKolu)
-        podaciOIzabranomKolu.anchor(top: brojevi.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 50)
-        
-        view.addSubview(kvote)
-        kvote.anchor(top: podaciOIzabranomKolu.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: kvoteHeight)
-        
-        kvote.addSubview(kvoteBK)
-        kvoteBK.anchor(top: kvote.topAnchor, left: view.leftAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.width/8, height: kvoteHeight/2)
-        kvote.addSubview(kvoteKvota)
-        kvoteKvota.anchor(top: kvoteBK.bottomAnchor, left: view.leftAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.width/8, height: kvoteHeight/2)
-        
-        kvote.addSubview(kvote1)
-        kvote1.anchor(top: kvote.topAnchor, left: kvoteBK.rightAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.width/8, height: kvoteHeight/2)
-        
-        kvote.addSubview(kvote3_75)
-        kvote3_75.anchor(top: kvoteBK.bottomAnchor, left: kvoteBK.rightAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.width/8, height: kvoteHeight/2)
-        
-        
-        kvote.addSubview(kvotelinija)
-        kvotelinija.anchor(top: kvoteBK.bottomAnchor, left: view.leftAnchor, bottom: kvoteKvota.topAnchor, right: view.rightAnchor, paddingTop: 3, paddingLeft: 60, paddingBottom: 3, paddingRight: 20, width: 0, height: 2)
-        
-        
-        kvote.addSubview(kvote2)
-        kvote2.anchor(top: kvote.topAnchor, left: kvote1.rightAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.width/8, height: kvoteHeight/2)
-        
-        kvote.addSubview(kvote14)
-        kvote14.anchor(top: kvoteBK.bottomAnchor, left: kvote1.rightAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.width/8, height: kvoteHeight/2)
-        
-
-        kvote.addSubview(kvote3)
-        kvote3.anchor(top: kvote.topAnchor, left: kvote2.rightAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.width/8, height: kvoteHeight/2)
-        
-        kvote.addSubview(kvote65)
-        kvote65.anchor(top: kvoteBK.bottomAnchor, left: kvote2.rightAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.width/8, height: kvoteHeight/2)
-        
-        kvote.addSubview(kvote4)
-        kvote4.anchor(top: kvote.topAnchor, left: kvote3.rightAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.width/8, height: kvoteHeight/2)
-        
-        kvote.addSubview(kvote275)
-        kvote275.anchor(top: kvoteBK.bottomAnchor, left: kvote3.rightAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.width/8, height: kvoteHeight/2)
-        
-        kvote.addSubview(kvote5)
-        kvote5.anchor(top: kvote.topAnchor, left: kvote4.rightAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.width/8, height: kvoteHeight/2)
-        
-        kvote.addSubview(kvote1350)
-        kvote1350.anchor(top: kvoteBK.bottomAnchor, left: kvote4.rightAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.width/8, height: kvoteHeight/2)
-        
-        kvote.addSubview(kvote6)
-        kvote6.anchor(top: kvote.topAnchor, left: kvote5.rightAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.width/8, height: kvoteHeight/2)
-        
-        kvote.addSubview(kvote6500)
-        kvote6500.anchor(top: kvoteBK.bottomAnchor, left: kvote5.rightAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.width/8, height: kvoteHeight/2)
-        
-        kvote.addSubview(kvote7)
-        kvote7.anchor(top: kvote.topAnchor, left: kvote6.rightAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.width/8, height: kvoteHeight/2)
-        
-        kvote.addSubview(kvote25000)
-        kvote25000.anchor(top: kvoteBK.bottomAnchor, left: kvote6.rightAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.width/8, height: kvoteHeight/2)
-        
-        
-        view.addSubview(slucajniBrojevi)
-        slucajniBrojevi.anchor(top: kvote.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.width/2, height: 100)
-        
-        
-        view.addSubview(ukupnoIzabranoBrojevaLabela)
-        ukupnoIzabranoBrojevaLabela.anchor(top: kvote.bottomAnchor, left: slucajniBrojevi.rightAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.width/2, height: 100)
-        
-
-    }
 
 }
 
 
+//MARK: -- Ekstenzije, UILayout
+extension Talon {
+    
+    
+    
+    public func vratiLabelu(tekst: String) -> UILabel {
+       let label = UILabel(frame: .zero)
+       label.textAlignment = .center
+       label.text = tekst
+       label.font = Constants.fontKvote
+       label.adjustsFontSizeToFitWidth = true
+       label.textColor = .white
+       label.numberOfLines = 0
+       return label
+    }
+    
+    public func vratiLiniju(width: Double) -> UILabel {
+       let label = UILabel(frame: .zero)
+       label.textAlignment = .center
+       label.font = Constants.fontKvote
+       label.adjustsFontSizeToFitWidth = true
+       label.textColor = .white
+       label.backgroundColor = .lightGray
+       label.numberOfLines = 0
+       return label
+    }
+    
+    func postaviUI() {
+        
+        podaciOIzabranomkolu = vratiLabelu(tekst: "")
+        
+        ukupnoIzabranoBrojevaLabela = vratiLabelu(tekst: "")
+        ukupnoIzabranoBrojevaLabela.layer.borderWidth = 2
+        ukupnoIzabranoBrojevaLabela.layer.borderColor = UIColor.black.cgColor
+        ukupnoIzabranoBrojevaLabela.layer.cornerRadius = 14
+        ukupnoIzabranoBrojevaLabela.layer.backgroundColor = UIColor.clear.cgColor
+
+        postaviBrojeve()
+        
+        let kvoteHeight = view.width/8
+        kvote.backgroundColor = .blue
+        view.addSubview(brojevi, anchors: [.leading(0), .trailing(0), .top(0), .height(400)])
+        view.addSubview(podaciOIzabranomkolu, anchors: [.leading(0), .trailing(0), .top(400), .height(50)])
+        view.addSubview(kvote, anchors: [.leading(0), .trailing(0), .top(450), .height(kvoteHeight*2)])
+        view.addSubview(slucajniBrojevi, anchors: [.leading(0), .top(600), .bottom(0)])
+        view.addSubview(ukupnoIzabranoBrojevaLabela, anchors: [.leading(view.width/2), .trailing(0), .top(600), .bottom(0)])
+        
+        kvote.addSubview(vratiLabelu(tekst: "BK"), anchors: [.leading(0), .top(0), .width(kvoteHeight), .height(kvoteHeight)])
+        kvote.addSubview(vratiLabelu(tekst: "Kvota"), anchors: [.leading(0), .top(kvoteHeight), .width(kvoteHeight), .height(kvoteHeight)])
+        kvote.addSubview(vratiLabelu(tekst: "1"), anchors: [.leading(kvoteHeight), .top(0), .width(kvoteHeight), .height(kvoteHeight)])
+        kvote.addSubview(vratiLabelu(tekst: "3.75"), anchors: [.leading(kvoteHeight), .top(kvoteHeight), .width(kvoteHeight), .height(kvoteHeight)])
+        kvote.addSubview(vratiLabelu(tekst: "2"), anchors: [.leading(2*kvoteHeight), .top(0), .width(kvoteHeight), .height(kvoteHeight)])
+        kvote.addSubview(vratiLabelu(tekst: "5"), anchors: [.leading(2*kvoteHeight), .top(kvoteHeight), .width(kvoteHeight), .height(kvoteHeight)])
+        kvote.addSubview(vratiLabelu(tekst: "3"), anchors: [.leading(3*kvoteHeight), .top(0), .width(kvoteHeight), .height(kvoteHeight)])
+        kvote.addSubview(vratiLabelu(tekst: "7"), anchors: [.leading(3*kvoteHeight), .top(kvoteHeight), .width(kvoteHeight), .height(kvoteHeight)])
+        kvote.addSubview(vratiLabelu(tekst: "4"), anchors: [.leading(4*kvoteHeight), .top(0), .width(kvoteHeight), .height(kvoteHeight)])
+        kvote.addSubview(vratiLabelu(tekst: "16"), anchors: [.leading(4*kvoteHeight), .top(kvoteHeight), .width(kvoteHeight), .height(kvoteHeight)])
+        kvote.addSubview(vratiLabelu(tekst: "5"), anchors: [.leading(5*kvoteHeight), .top(0), .width(kvoteHeight), .height(kvoteHeight)])
+        kvote.addSubview(vratiLabelu(tekst: "32"), anchors: [.leading(5*kvoteHeight), .top(kvoteHeight), .width(kvoteHeight), .height(kvoteHeight)])
+        kvote.addSubview(vratiLabelu(tekst: "6"), anchors: [.leading(6*kvoteHeight), .top(0), .width(kvoteHeight), .height(kvoteHeight)])
+        kvote.addSubview(vratiLabelu(tekst: "64"), anchors: [.leading(6*kvoteHeight), .top(kvoteHeight), .width(kvoteHeight), .height(kvoteHeight)])
+        kvote.addSubview(vratiLabelu(tekst: "7"), anchors: [.leading(7*kvoteHeight), .top(0), .width(kvoteHeight), .height(kvoteHeight)])
+        kvote.addSubview(vratiLabelu(tekst: "128"), anchors: [.leading(7*kvoteHeight), .top(kvoteHeight), .width(kvoteHeight), .height(kvoteHeight)])
+        kvote.addSubview(vratiLiniju(width: 3), anchors: [.leading(30), .top(kvoteHeight), .width(kvoteHeight), .trailing(-30), .height(3)])
+        
+    }
+}
+
+
 //MARK: -- Ekstenzije, CollectionView
-
-
 extension Talon: UICollectionViewDataSource {
+    
+    ///funkcija koja obezbedjuje unos brojeva u listu, a nakon toga kreiranje Collection-view-a koji ce biti "napunjen" brojevima iz liste
+    
+    func postaviBrojeve() {
+        ubaciBrojeveUListu()
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.register(TalonCell.self, forCellWithReuseIdentifier: collectionCellIdentifier)
+        collectionView.backgroundColor = UIColor.darkGray
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        brojevi.addSubview(collectionView)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: collectionCellIdentifier, for: indexPath as IndexPath) as! TalonCell
         cell.setup(with: listaSvihBrojeva[indexPath.row])
@@ -513,24 +296,27 @@ extension Talon: UICollectionViewDataSource {
         
         let selectedCell:TalonCell = collectionView.cellForItem(at: indexPath)! as! TalonCell
         
-        procesuirajKliknutiBroj(brojKliknut: indexPath.row+1)
-        
-        if brojJeVecKliknut(brojKliknut: indexPath.row+1) {
-            selectedCell.broj.layer.borderColor = UIColor.green.cgColor
+        if (brojJeVecKliknut(brojKliknut: indexPath.row+1)){
+            selectedCell.broj.layer.borderColor = Constants.borderColorOriginalTalonCell
+            if let index = listaIzabranihBrojeva.firstIndex(of: indexPath.row+1) {
+                listaIzabranihBrojeva.remove(at: index)
+                ukupnoIzabranoBrojeva -= 1
+            }
         }
         else {
-            selectedCell.broj.layer.borderColor = Constants.borderColorOriginalTalonCell
+            if listaIzabranihBrojeva.count < 15 {
+                selectedCell.broj.layer.borderColor = UIColor.green.cgColor
+                listaIzabranihBrojeva.append(indexPath.row+1)
+                ukupnoIzabranoBrojeva += 1
+            }
+            else {
+                let alert = AlertInfo.alert(message: "Maksimalni broj brojeva je 15.")
+                self.present(alert, animated: true)
+            }
         }
-        
-        
     }
 
-
 }
-extension Talon: UICollectionViewDelegate {
-
-}
-
 
 extension Talon: UICollectionViewDelegateFlowLayout {
     

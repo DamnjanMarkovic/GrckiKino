@@ -7,6 +7,11 @@
 
 import Foundation
 
+struct NarednoKoloLista: Decodable {
+    let narednaKola: [NarednoKolo]
+}
+
+
 struct NarednoKolo: Decodable {
 
     

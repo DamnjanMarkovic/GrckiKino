@@ -7,7 +7,23 @@
 
 import Foundation
 
+
+
 class JSONParser {
+    
+    
+//    func decodeObjectFromData <T : Codable> (expectedType : T.Type , data : Data) -> T? {
+//        var object : T? = nil
+//        do {
+//            object =  try JSONDecoder().decode(T.self, from: data)
+//        }
+//        catch {
+//            print(error.localizedDescription)
+//        }
+//        return object
+//    }
+    
+    
     
     typealias result<T> = (Result<[T], Error>) -> Void
     
